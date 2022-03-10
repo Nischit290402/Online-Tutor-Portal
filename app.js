@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
-const routes = require("./routes/tutors");
+const tutorRoutes = require("./routes/tutors");
+const parentRoutes = require("./routes/parents");
+const studentRoutes = require("./routes/students");
 const connectDB = require("./db/connect");
 require("dotenv").config();
 
@@ -14,7 +16,9 @@ app.get("/home", (req, res) => {
   res.send("Home");
 });
 
-app.use("/tutors", routes);
+app.use("/tutors", tutorRoutes);
+app.use("/parents", parentRoutes);
+app.use("/students", studentRoutes);
 
 port = process.env.port || 5000;
 const start = async () => {
@@ -29,3 +33,6 @@ const start = async () => {
 };
 
 start();
+
+const utc = new Date().toJSON().slice(0, 10);
+console.log(utc);
