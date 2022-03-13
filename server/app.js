@@ -12,6 +12,10 @@ app.get("/", (req, res) => {
   res.send("Landing page");
 });
 
+app.get("/api", (req, res) => {
+  res.send("Node interaction");
+});
+
 app.get("/home", (req, res) => {
   res.send("Home");
 });
