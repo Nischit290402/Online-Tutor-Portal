@@ -40,7 +40,7 @@ const enrollCourse = async (req, res) => {
 
     console.log(find_course);
     if (find_course.length == 0) {
-      res.status(500).send(`Course with id: ${courseID} not found`);
+      res.send(`Course with id: ${courseID} not found`); // 500 status
     }
     const enroll_data = {
       course_ID: courseID,
