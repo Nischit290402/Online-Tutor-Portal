@@ -8,9 +8,11 @@ import Tutorinfo from "./pages/tutorinfo/tutorinfo";
 import CreateCourse from "./pages/tutors/CreateCourse";
 import GetTutorCourses from "./pages/tutors/GetTutorCourses";
 import GetTutorCourse from "./pages/tutors/GetTutorCourse";
-import GetAllCourses from "./pages/parents/GetAllCourses";
+import GetAllParentCourses from "./pages/parents/GetAllParentCourses";
 import GetParentCourse from "./pages/parents/GetParentCourse";
 import EnrollCourse from "./pages/parents/EnrollCourse";
+import GetAllCourses from "./pages/all/GetAllCourses";
+import CheckEnroll from "./pages/parents/CheckEnroll";
 const App = () => {
   return (
     <>
@@ -20,12 +22,14 @@ const App = () => {
           <Route path="/" element={<Landing />} />
           <Route path="/tutorinfo" element={<Tutorinfo />} />
           <Route path="/courses" element={<Courses />} />
-          <Route path="/parents" element={<GetAllCourses />} />
+          <Route path="/parents" element={<GetAllParentCourses />} />
+          <Route path="/parents/check-enroll/:id" element={<CheckEnroll />} />
           <Route path="/parents/enroll-course/:id" element={<EnrollCourse />} />
           <Route path="/parents/:id" element={<GetParentCourse />} />
           <Route path="/tutors" element={<GetTutorCourses />} />
           <Route path="/tutors/create-course" element={<CreateCourse />} />
           <Route path="/tutors/:id" element={<GetTutorCourse />} />
+          <Route path="/all/courses" element={<GetAllCourses />} />
         </Routes>
       </Router>
       <Footer />
