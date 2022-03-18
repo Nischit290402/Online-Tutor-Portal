@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 let url = window.location.pathname;
-console.log(url);
+// console.log(url);
 
 class EnrollCourse extends Component {
   constructor(props) {

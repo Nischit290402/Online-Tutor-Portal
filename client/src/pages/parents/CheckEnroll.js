@@ -3,8 +3,8 @@ import axios from "axios";
 
 let url = window.location.pathname;
 let cid = url.slice(22);
-console.log(cid);
-console.log(url);
+// console.log(cid);
+// console.log(url);
 
 class CheckEnroll extends Component {
   constructor(props) {

@@ -10,7 +10,7 @@ import "./Box.css";
 const renderCard = (card, index) => {
   return (
     <Card xs={{ maxWidth: 345 }} key={index} className="box">
-      <img src={card.image} alt="CS208" height="150" />
+      <img src={card.image} alt="image" height="150" />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
           {card.title}
@@ -20,14 +20,15 @@ const renderCard = (card, index) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">BUY</Button>
-        <Button size="small">Learn More</Button>
+        <a href={card.more_url}>
+          <Button size="small">Learn More</Button>
+        </a>
       </CardActions>
     </Card>
   );
 };
 
-class BasicCard extends Component {
+class BasicTutorCard extends Component {
   constructor(props) {
     super(props);
 
@@ -37,7 +38,7 @@ class BasicCard extends Component {
   }
 
   componentDidMount() {
-    axios.get("/parents").then((response) => {
+    axios.get("/tutors").then((response) => {
       this.setState({ courses: response.data });
       console.log(response.data);
     });
@@ -52,6 +53,7 @@ class BasicCard extends Component {
         "https://www.computerhope.com/jargon/s/software-engineering.jpg";
       x.title = courses[i].name;
       x.text = courses[i].description;
+      x.more_url = "tutors/" + courses[i]._id;
       CardInfo.push(x);
     }
     return (
@@ -62,4 +64,4 @@ class BasicCard extends Component {
   }
 }
 
-export default BasicCard;
+export default BasicTutorCard;

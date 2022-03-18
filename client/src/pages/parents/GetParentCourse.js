@@ -3,7 +3,7 @@ import axios from "axios";
 import EnrollCourse from "./EnrollCourse";
 
 let url = window.location.pathname;
-console.log(url);
+// console.log(url);
 
 class GetParentCourse extends Component {
   constructor(props) {
