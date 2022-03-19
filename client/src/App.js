@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
+import Navbarr from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Landing from "./pages/landing/landing";
 import Courses from "./pages/courses/courses";
@@ -11,11 +11,15 @@ import GetTutorCourse from "./pages/tutors/GetTutorCourse";
 import GetAllCourses from "./pages/parents/GetAllCourses";
 import GetParentCourse from "./pages/parents/GetParentCourse";
 import EnrollCourse from "./pages/parents/EnrollCourse";
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const App = () => {
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbarr />
+        <div className="main">
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/tutorinfo" element={<Tutorinfo />} />
@@ -27,8 +31,9 @@ const App = () => {
           <Route path="/tutors/create-course" element={<CreateCourse />} />
           <Route path="/tutors/:id" element={<GetTutorCourse />} />
         </Routes>
-      </Router>
+        </div>
       <Footer />
+      </Router>
     </>
   );
 };

@@ -1,28 +1,24 @@
 import React from "react";
-import {Box,Container,Row,Column,FooterLink,Heading,} from "./styles";
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Container  from 'react-bootstrap/Container';
+import{ Link} from 'react-router-dom';
+import './Footer.css'
 
 const Footer = () => {
 return (
-	<Box>
-	<h1 style={{ color: "green",
-				textAlign: "center",
-				marginTop: "-50px" }}>
-		All right reserved
-	</h1>
+	<Navbar sticky="bottom" variant="primary" >
 	<Container>
-		<Row>
-		<Column>
-			<Heading>About Us</Heading>
-		</Column>
-		<Column>
-			<Heading>Contact Us</Heading>
-		</Column>
-		<Column>
-			<Heading>Social Media</Heading>
-		</Column>
-		</Row>
+		<ul>
+		<li><Link to='/'>Home</Link></li>
+		<li><Link to='/'>Pricing</Link></li>
+		<li><Link to='/'>Contact us</Link></li>
+		</ul>
 	</Container>
-	</Box>
+	<Nav className="me-auto">
+	ALL RIGHTS RESERVED 
+	</Nav>
+	</Navbar>
 );
 };
 export default Footer;
