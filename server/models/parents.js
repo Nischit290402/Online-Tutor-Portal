@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
+const ParentSchema = new mongoose.Schema({
   email: {
     type: String,
     trim: true,
@@ -16,6 +16,11 @@ const UserSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
+  student_email: {
+    type: String,
+    trim: true,
+    required: true,
+  },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Parent", ParentSchema);

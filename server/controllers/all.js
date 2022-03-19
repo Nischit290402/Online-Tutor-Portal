@@ -12,6 +12,7 @@ const getAllCourses = async (req, res) => {
   }
 };
 
+//ToDo
 const getAllTutors = async (req, res) => {
   res.send("All tutors Info");
 };
