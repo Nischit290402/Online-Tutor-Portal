@@ -1,40 +1,37 @@
 import React from 'react';
-import {Nav,NavLink,Bars,NavMenu,NavBtn,NavBtnLink,} from './styles';
+import Navbar from 'react-bootstrap/Navbar';
+import Container  from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav'
+import Button from 'react-bootstrap/Button';
 
-const Navbar = () => {
+const Navbarr = () => {
     return (
 	<>
-	<Nav>
-		<Bars />
-
-		<NavMenu>
-		<NavLink to='/' >
-			Home
-		</NavLink>
-		<NavLink to='/tutorinfo' activeStyle>
-			Our Tutors
-		</NavLink>
-		<NavLink to='/courses' activeStyle>
-			Courses available
-		</NavLink>
-		{/* <NavLink to='/team' activeStyle>
-			Teams
-		</NavLink>
-		<NavLink to='/blogs' activeStyle>
-			Blogs
-		</NavLink> */}
-		{/* <NavLink to='/sign-up' activeStyle>
-			Sign Up
-		</NavLink> */}
-		{/* Second Nav */}
-		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
-		</NavMenu>
-		<NavBtn>
-		<NavBtnLink to='/signin'>Sign In</NavBtnLink>
-		</NavBtn>
-	</Nav>
+	<Navbar sticky="top" bg="dark" variant="dark" >
+    <Container>
+    <Navbar.Brand href="/">
+    <img
+        src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/tbvbvipimh2camf5nb2q"
+        width="30"
+        height="30"
+        className="d-inline-block align-top"
+        alt="Website logo"
+      />
+      Tutor Portal</Navbar.Brand>
+    <Nav className="me-auto">
+      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link href="/tutors">Tutors</Nav.Link>
+      <Nav.Link href="/courses">Courses</Nav.Link>
+    </Nav>
+    <Nav>
+    <Button variant="outline-success">
+      <Nav.Link href="/sigin">Sign In</Nav.Link>
+      </Button>
+    </Nav>
+    </Container>
+  </Navbar>
 	</>
 );
 };
 
-export default Navbar;
+export default Navbarr;
