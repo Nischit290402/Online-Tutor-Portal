@@ -5,6 +5,8 @@ import Footer from "./components/Footer/Footer";
 import Landing from "./pages/landing/landing";
 import Courses from "./pages/courses/courses";
 import Tutorinfo from "./pages/tutorinfo/tutorinfo";
+import Cards from "./components/Courses/Courses";
+
 import CreateCourse from "./pages/tutors/CreateCourse";
 import GetTutorCourses from "./pages/tutors/GetTutorCourses";
 import GetTutorCourse from "./pages/tutors/GetTutorCourse";
@@ -31,8 +33,9 @@ const App = () => {
           <Route path="/tutors/create-course" element={<CreateCourse />} />
           <Route path="/tutors/:id" element={<GetTutorCourse />} />
         </Routes>
+        <Cards />
         </div>
-      <Footer />
+        <Footer />
       </Router>
     </>
   );
