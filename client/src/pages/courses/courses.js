@@ -1,5 +1,5 @@
 import React from "react";
-import CourseCard from "./../../components/CourseCard/CourseCard";
+import Card from "./../../components/CourseCard/CourseCard";
 import { Grid } from "@mui/material";
 
 const Courses=()=>{
@@ -8,7 +8,7 @@ const Courses=()=>{
         <h1>Course list</h1>
         <h1>Courses</h1>
         <Grid item spacing={2} direction="row" justifyContent="space-between" alignItems="baseline">
-            <CourseCard />
+            <Card />
         </Grid>     
         </>
     )
