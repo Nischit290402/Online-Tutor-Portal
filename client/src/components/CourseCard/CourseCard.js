@@ -5,9 +5,9 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Carousel from 'react-elastic-carousel';
-import "./Box.css";
+import "./Card.css";
 
-const CardInfo=[
+export const CardInfo=[
     {image:"https://www.computerhope.com/jargon/s/software-engineering.jpg", title:"CS208", text:"SE"},
     {image:"https://miro.medium.com/max/1024/1*9QRFQdpO2f59GsN2KsE9XA.png", title:"CS204", text:"DAA"},
     {image:"https://hardwarebee.com/wp-content/uploads/2020/04/logic-design-feature.png", title:"CS206", text:"LD"},
@@ -50,8 +50,8 @@ const CourseCard = () => {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" >BUY</Button>
-              <Button size="small">Learn More</Button>
+              <Button size="small">BUY</Button>
+              <Button size="small" href="/CourseInfo">Learn More</Button>
             </CardActions>
           </Card>
         );
