@@ -7,6 +7,7 @@ import Courses from "./pages/courses/courses";
 import CourseInfo from "./pages/courseinfo/CourseInfo";
 import Tutorinfo from "./pages/tutorinfo/tutorinfo";
 
+
 import CreateCourse from "./pages/tutors/CreateCourse";
 import GetTutorCourses from "./pages/tutors/GetTutorCourses";
 import GetTutorCourse from "./pages/tutors/GetTutorCourse";
