@@ -1,5 +1,0 @@
-{
-  "env": {
-    "CONNECTION_STRING": "mongodb+srv://parth:cs258@nodeexpressprojects.zsmk9.mongodb.net/otp?retryWrites=true&w=majority"
-  }
-}
