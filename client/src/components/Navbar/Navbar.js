@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container  from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button';
+import Auth from './../Auth/Auth';
 
 const Navbarr = () => {
     return (
@@ -24,6 +25,7 @@ const Navbarr = () => {
       <Nav.Link href="/courses">Courses</Nav.Link>
     </Nav>
     <Nav>
+    <Auth/>
     <Button variant="outline-success">
       <Nav.Link href="/sigin">Sign In</Nav.Link>
       </Button>
