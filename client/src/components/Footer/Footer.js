@@ -7,7 +7,7 @@ import './Footer.css'
 
 const Footer = () => {
 return (
-	<Navbar sticky="bottom" variant="primary" >
+	<Navbar fixed="bottom" variant="primary" >
 	<Container>
 		<ul>
 		<li><Link to='/'>Home</Link></li>
