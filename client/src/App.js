@@ -18,24 +18,27 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
+
+  const user = JSON.parse(localStorage.getItem('profile'));
+
   return (
     <>
       <Router>
         <Navbarr />
         <div className="main">
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/tutorinfo" element={<Tutorinfo />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/courseinfo" element={<CourseInfo />} />
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/tutorinfo" element={<Tutorinfo />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/courseinfo" element={<CourseInfo />} />
 
-          <Route path="/parents" element={<GetAllCourses />} />
-          <Route path="/parents/enroll-course/:id" element={<EnrollCourse />} />
-          <Route path="/parents/:id" element={<GetParentCourse />} />
-          <Route path="/tutors" element={<GetTutorCourses />} />
-          <Route path="/tutors/create-course" element={<CreateCourse />} />
-          <Route path="/tutors/:id" element={<GetTutorCourse />} />
-        </Routes>
+            <Route path="/parents" element={<GetAllCourses />} />
+            <Route path="/parents/enroll-course/:id" element={<EnrollCourse />} />
+            <Route path="/parents/:id" element={<GetParentCourse />} />
+            <Route path="/tutors" element={<GetTutorCourses />} />
+            <Route path="/tutors/create-course" element={<CreateCourse />} />
+            <Route path="/tutors/:id" element={<GetTutorCourse />} />
+          </Routes>
         </div>
         <Footer />
       </Router>

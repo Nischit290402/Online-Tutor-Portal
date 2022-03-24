@@ -1,18 +1,47 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Container  from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
-<<<<<<< HEAD
 import Auth from './../Auth/Auth';
-
-=======
+import './styles.css';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import {BiSearchAlt2} from 'react-icons/bi';
->>>>>>> aecea81888e90e1b1b55be52df2e00698175faab
+import { useNavigate ,useLocation} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as actionType from '../../constants/actionTypes';
+
+
 const Navbarr = () => {
-    return (
+  
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const navigation = useNavigate();
+
+  const logout = () => {
+    dispatch({ type: actionType.LOGOUT });
+
+    navigation('/');
+
+    setUser(null);
+  };
+
+  useEffect(() => {
+    const token = user?.token;
+
+    // if (token) {
+    //   const decodedToken = decode(token);
+
+    //   if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    // }
+
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
+  
+  
+  return (
 	<>
 	<Navbar sticky="top" bg="dark" variant="dark" >
     <Container>
@@ -44,14 +73,13 @@ const Navbarr = () => {
       </InputGroup>
     </Nav>
     <Nav>
-<<<<<<< HEAD
-    <Auth/>
-    <Button variant="outline-success">
-=======
-      <Nav.Item><Button variant="outline-success" className="justify-content-end">
->>>>>>> aecea81888e90e1b1b55be52df2e00698175faab
-      <Nav.Link href="/sigin">Sign In</Nav.Link>
-      </Button></Nav.Item>
+      {user?.result?(
+        <Button variant="outline-warning"  onClick={logout}>
+          Log out
+        </Button>
+      ):(
+        <Auth/>
+      )}
     </Nav>
     </Container>
   </Navbar>
