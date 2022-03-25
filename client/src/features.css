@@ -1,0 +1,15 @@
+.card-group {
+    justify-content: center;
+}
+
+.card {
+    padding: 5px 5px t;
+    height: auto !important;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.card-body {
+    background-color: #F6F5F5;
+    margin: 0;
+}
