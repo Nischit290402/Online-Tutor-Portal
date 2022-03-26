@@ -4,7 +4,10 @@ import Navbarr from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Landing from "./pages/landing/landing";
 import Courses from "./pages/courses/courses";
+import Student from "./pages/homepage/student";
 import Tutorinfo from "./pages/tutorinfo/tutorinfo";
+import RegistrationForm from "./pages/registration/reg";
+import RegistrationForm1 from "./pages/registration/reg2";
 
 
 import CreateCourse from "./pages/tutors/CreateCourse";
@@ -25,6 +28,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/tutorinfo" element={<Tutorinfo />} />
+          <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/register2" element={<RegistrationForm1 />} />
+          <Route path="/student" element={<Student />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/parents" element={<GetAllCourses />} />
           <Route path="/parents/enroll-course/:id" element={<EnrollCourse />} />

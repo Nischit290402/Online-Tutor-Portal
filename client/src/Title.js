@@ -5,6 +5,7 @@ function Title()
 
 backgroundImage: "linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url('https://static01.nyt.com/images/2020/04/12/business/10View-illo/10View-illo-videoSixteenByNineJumbo1600.jpg')",
 backgroundRepeat:'no-repeat',
+backgroundSize:'100% 100%',
 // width:'100%',
 height:'450px',
 color:'white',
