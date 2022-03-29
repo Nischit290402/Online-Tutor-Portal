@@ -36,7 +36,7 @@ const App = () => {
           <Route path="/register2" element={<RegistrationForm1 />} />
           <Route path="/student" element={<Student />} />
           <Route path="/courses" element={<Courses />} />
-          <Route path="/courseinfo" element={<CourseInfo />} />
+          <Route path="/courseinfo/:id" element={<CourseInfo />} />
           <Route path="/parents" element={<GetAllCourses />} />
           <Route path="/parents/enroll-course/:id" element={<EnrollCourse />} />
           <Route path="/parents/:id" element={<GetParentCourse />} />
@@ -44,7 +44,6 @@ const App = () => {
           <Route path="/tutors/create-course" element={<CreateCourse />} />
           <Route path="/tutors/:id" element={<GetTutorCourse />} />
         </Routes>
-          
         </div>
         <Footer />
       </Router>
