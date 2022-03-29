@@ -36,7 +36,7 @@ app.use("/all", allRoutes);
 port = process.env.port || 5000;
 const start = async () => {
   try {
-    await connectDB("mongodb+srv://parth:cs258@nodeexpressprojects.zsmk9.mongodb.net/otp?retryWrites=true&w=majority");
+    await connectDB(process.env.CONNECTION_STRING);
     app.listen(5000, () => {
       console.log("Server is listening on port 5000....");
     });
