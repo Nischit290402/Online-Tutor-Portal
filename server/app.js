@@ -4,7 +4,9 @@ const bodyParser = require("body-parser");
 const tutorRoutes = require("./routes/tutors");
 const parentRoutes = require("./routes/parents");
 const studentRoutes = require("./routes/students");
+const userRoutes = require("./routes/users");
 const allRoutes = require("./routes/all");
+const checkRoutes = require("./routes/check");
 const connectDB = require("./db/connect");
 require("dotenv").config();
 
@@ -31,6 +33,8 @@ app.get("/home", (req, res) => {
 app.use("/tutors", tutorRoutes);
 app.use("/parents", parentRoutes);
 app.use("/students", studentRoutes);
+app.use("/check", checkRoutes);
+app.use("/users", userRoutes);
 app.use("/all", allRoutes);
 
 port = process.env.port || 5000;

@@ -44,6 +44,7 @@ const createCourse = async (req, res) => {
   }
 };
 
+//change findOneAndUpdate
 const updateCourse = async (req, res) => {
   // Not updating course currently
   try {
