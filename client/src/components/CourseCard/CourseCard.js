@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -6,25 +6,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Carousel from 'react-elastic-carousel';
 import "./Card.css";
+import Data from '../../data/Data';
+import { Link } from 'react-router-dom';
 
-export const CardInfo=[
-    {image:"https://www.computerhope.com/jargon/s/software-engineering.jpg", title:"CS208", text:"SE"},
-    {image:"https://miro.medium.com/max/1024/1*9QRFQdpO2f59GsN2KsE9XA.png", title:"CS204", text:"DAA"},
-    {image:"https://hardwarebee.com/wp-content/uploads/2020/04/logic-design-feature.png", title:"CS206", text:"LD"},
-    {image:"https://miro.medium.com/max/400/0*zeeThlxTBBJmUpOP.png", title:"CS202", text:"AUTOMATA"},
-    {image:"https://www.computerhope.com/jargon/s/software-engineering.jpg", title:"CS208", text:"SE"},
-    {image:"https://miro.medium.com/max/1024/1*9QRFQdpO2f59GsN2KsE9XA.png", title:"CS204", text:"DAA"},
-    {image:"https://hardwarebee.com/wp-content/uploads/2020/04/logic-design-feature.png", title:"CS206", text:"LD"},
-    {image:"https://miro.medium.com/max/400/0*zeeThlxTBBJmUpOP.png", title:"CS202", text:"AUTOMATA"},
-    {image:"https://www.computerhope.com/jargon/s/software-engineering.jpg", title:"CS208", text:"SE"},
-    {image:"https://miro.medium.com/max/1024/1*9QRFQdpO2f59GsN2KsE9XA.png", title:"CS204", text:"DAA"},
-    {image:"https://hardwarebee.com/wp-content/uploads/2020/04/logic-design-feature.png", title:"CS206", text:"LD"},
-    {image:"https://miro.medium.com/max/400/0*zeeThlxTBBJmUpOP.png", title:"CS202", text:"AUTOMATA"},
-    {image:"https://www.computerhope.com/jargon/s/software-engineering.jpg", title:"CS208", text:"SE"},
-    {image:"https://miro.medium.com/max/1024/1*9QRFQdpO2f59GsN2KsE9XA.png", title:"CS204", text:"DAA"},
-    {image:"https://hardwarebee.com/wp-content/uploads/2020/04/logic-design-feature.png", title:"CS206", text:"LD"},
-    {image:"https://miro.medium.com/max/400/0*zeeThlxTBBJmUpOP.png", title:"CS202", text:"AUTOMATA"}
-];
+// import CourseInfo from "../../pages/courseinfo/CourseInfo";
 
 const breakPoints = [
   {width:296,itemsToShow:1,itemsToScroll:1},
@@ -35,23 +20,35 @@ const breakPoints = [
 
 ];
 
-const CourseCard = () => {
+function CourseCard  ()  {
+    const [CardInfo, setCardInfo] = useState([])
 
-    const renderCard = (card, index) => {
+    useEffect(() => {
+        setCardInfo(Data().CardInfo)
+    },[])
+    
+    
+    const renderCard = (CardInfo, index) => {
         return (
+          
           <Card xs={{ maxWidth: 345 }} key={index} className="box" >
-            <img src={card.image} alt={card.title} height="150" width="256"/>
+            <img src={CardInfo.image} alt={CardInfo.title} height="150" width="256"/>
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
-                {card.title}
+                {CardInfo.title}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {card.text}
+                {CardInfo.course}
               </Typography>
             </CardContent>
             <CardActions>
               <Button size="small">BUY</Button>
-              <Button size="small" href="/CourseInfo">Learn More</Button>
+              <Button 
+                size="small" 
+                >
+                  <Link to={'/courseinfo/'+ CardInfo.index} state={{desc: CardInfo.desc, course: CardInfo.course, title: CardInfo.title, img: CardInfo.image}} >Learn More</Link>
+              </Button>
+              
             </CardActions>
           </Card>
         );

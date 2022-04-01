@@ -11,6 +11,9 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as actionType from "../../constants/actionTypes";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Dropdown from "react-bootstrap/Dropdown";
+import pic from "./../../images/profile.jpg";
 
 const Navbarr = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -71,9 +74,32 @@ const Navbarr = () => {
           </Nav>
           <Nav>
             {user?.result ? (
-              <Button variant="outline-warning" onClick={logout}>
-                Log out
-              </Button>
+              <>
+                <Dropdown>
+                  <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                    <img
+                      src={pic}
+                      width="37"
+                      height="37"
+                      className="d-inline-block "
+                      alt="Website logo"
+                    />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu variant="dark">
+                    <Dropdown.Item href="/tutors">Explore Tutors</Dropdown.Item>
+                    <Dropdown.Item href="/courses">My Courses</Dropdown.Item>
+                    <Dropdown.Item href="/messages">Messages</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item href="#" onClick={logout}>
+                      Logout
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+
+                <Button variant="outline-warning" onClick={logout}>
+                  Log out
+                </Button>
+              </>
             ) : (
               <Auth />
             )}

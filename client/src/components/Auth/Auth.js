@@ -21,7 +21,7 @@ const Auth = () => {
       dispatch({ type: AUTH, data: { result, token } });
       console.log(user);
       // setUser(result)
-      navigation("/");
+      navigation("/users/check");
     } catch (error) {
       console.log(error);
     }
