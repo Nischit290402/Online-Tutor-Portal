@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
-import Auth from './../Auth/Auth';
-import './styles.css';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
-import { BiSearchAlt2 } from 'react-icons/bi';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import * as actionType from '../../constants/actionTypes';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Dropdown from 'react-bootstrap/Dropdown';
-import pic from './../../images/profile.jpg';
+import React, { useEffect, useState } from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
+import Auth from "./../Auth/Auth";
+import "./styles.css";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
+import { BiSearchAlt2 } from "react-icons/bi";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import * as actionType from "../../constants/actionTypes";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Dropdown from "react-bootstrap/Dropdown";
+import pic from "./../../images/profile.jpg";
 
 const Navbarr = () => {
-
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const location = useLocation();
   const navigation = useNavigate();
@@ -25,7 +24,7 @@ const Navbarr = () => {
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
 
-    navigation('/');
+    navigation("/");
 
     setUser(null);
   };
@@ -39,13 +38,12 @@ const Navbarr = () => {
     //   if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     // }
 
-    setUser(JSON.parse(localStorage.getItem('profile')));
+    setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
-
 
   return (
     <>
-      <Navbar sticky="top" bg="dark" variant="dark" >
+      <Navbar sticky="top" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/">
             <img
@@ -61,14 +59,14 @@ const Navbarr = () => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/tutors">Tutors</Nav.Link>
             <Nav.Link href="/courses">Courses</Nav.Link>
-
           </Nav>
           <Nav className="me-auto">
             <InputGroup className="me">
               <FormControl
                 placeholder="Search"
                 aria-label="Example text with button addon"
-                aria-describedby="basic-addon1" />
+                aria-describedby="basic-addon1"
+              />
               <Button variant="outline-secondary" id="button-addon1">
                 <BiSearchAlt2 />
               </Button>
@@ -87,12 +85,14 @@ const Navbarr = () => {
                       alt="Website logo"
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu variant='dark'>
+                  <Dropdown.Menu variant="dark">
                     <Dropdown.Item href="/tutors">Explore Tutors</Dropdown.Item>
                     <Dropdown.Item href="/courses">My Courses</Dropdown.Item>
                     <Dropdown.Item href="/messages">Messages</Dropdown.Item>
                     <Dropdown.Divider />
-                    <Dropdown.Item href="#" onClick={logout}>Logout</Dropdown.Item>
+                    <Dropdown.Item href="#" onClick={logout}>
+                      Logout
+                    </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
 

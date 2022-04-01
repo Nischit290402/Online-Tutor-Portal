@@ -1,21 +1,26 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-  email: {
+const TimeTableSchema = new mongoose.Schema({
+  course_id: {
     type: String,
     trim: true,
     required: true,
   },
-  role: {
+  day: {
     type: String,
     trim: true,
     required: true,
   },
-  name: {
+  time: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+  meet_link: {
     type: String,
     trim: true,
     required: true,
   },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", TimeTableSchema);

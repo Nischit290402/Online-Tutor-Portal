@@ -1,11 +1,32 @@
+import { useState } from "react";
 import React, { Component } from "react";
 import axios from "axios";
-import EnrollCourse from "./EnrollCourse";
+
+const CheckUser = () => {
+  const user = useState(JSON.parse(localStorage.getItem("profile")));
+  //   console.log(user);
+
+  if (user) {
+    // console.log(user.length);
+    console.log(user[0]);
+    if (user[0]?.result) {
+      console.log("Logged in");
+      console.log(user[0].result.email);
+    } else {
+      console.log("Logged out");
+      //Redirect to landing page
+    }
+  } else {
+    console.log("logged out");
+    //Redirect to landing page
+  }
+  return <></>;
+};
 
 let url = window.location.pathname;
 // console.log(url);
 
-class GetParentCourse extends Component {
+class GetTutorCourse extends Component {
   constructor(props) {
     super(props);
 
@@ -35,9 +56,6 @@ class GetParentCourse extends Component {
               <div> {course.name} </div>
               <div> {course.description} </div>
               <div> {course.tutor_email} </div>
-              <div>
-                <EnrollCourse />
-              </div>
             </center>
           </div>
         </div>
@@ -52,4 +70,4 @@ class GetParentCourse extends Component {
   }
 }
 
-export default GetParentCourse;
+export default CheckUser;

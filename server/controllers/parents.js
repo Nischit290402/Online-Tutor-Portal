@@ -1,8 +1,8 @@
 const login_info = {
-  email: "parent2@gmail.com",
+  email: "parent1@gmail.com",
   role: "parent",
-  name: "parent2",
-  child_email: "student2@gmail.com",
+  name: "parent1",
+  child_email: "student1@gmail.com",
 };
 
 const Course = require("../models/courses");
@@ -33,6 +33,7 @@ const getCourse = async (req, res) => {
 
 const utc = new Date().toJSON().slice(0, 10);
 
+//ToDo: Check if student is already enrolled
 const enrollCourse = async (req, res) => {
   const { id: courseID } = req.params;
   try {
@@ -59,6 +60,7 @@ const unenrollCourse = async (req, res) => {
   try {
     const unenrolled_course = await Enrolled.findOneAndDelete({
       course_ID: courseID,
+      student_email: login_info.child_email,
     });
     res.send("Course Deleted");
   } catch (err) {
@@ -66,9 +68,28 @@ const unenrollCourse = async (req, res) => {
   }
 };
 
+//Resolve error
+const checkEnroll = async (req, res) => {
+  const { id: courseID } = req.params;
+  try {
+    const check = await Enrolled.find({
+      course_ID: courseID,
+      student_email: login_info.child_email,
+    });
+    console.log(check);
+    if (check.length === 0) {
+      res.send("false");
+    } else {
+      res.send("true");
+    }
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 module.exports = {
   getAllCourses,
   getCourse,
   enrollCourse,
   unenrollCourse,
+  checkEnroll,
 };

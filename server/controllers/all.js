@@ -1,7 +1,6 @@
 const Course = require("../models/courses");
 
-//This contains functions of all routes accessed by the parents, which
-//includes getting all courses available, and enrolling/unenrolling their child from a course.
+//This contains functions of all routes accessed without login
 
 const getAllCourses = async (req, res) => {
   //Get all courses
@@ -13,6 +12,7 @@ const getAllCourses = async (req, res) => {
   }
 };
 
+//ToDo
 const getAllTutors = async (req, res) => {
   res.send("All tutors Info");
 };

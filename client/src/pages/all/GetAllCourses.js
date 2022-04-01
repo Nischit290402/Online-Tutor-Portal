@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 let url = window.location.pathname;
-console.log(url);
+// console.log(url);
 
 class GetAllCourses extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class GetAllCourses extends Component {
   }
 
   componentDidMount() {
-    axios.get("/parents").then((response) => {
+    axios.get("/all/courses").then((response) => {
       this.setState({ courses: response.data });
       console.log(response.data);
     });
@@ -35,9 +35,6 @@ class GetAllCourses extends Component {
               <div> {course.name} </div>
               <div> {course.description} </div>
               <div> {course.tutor_email} </div>
-              <div>
-                <a href={refs[i]}>More Details</a>
-              </div>
               <hr />
             </center>
           </div>

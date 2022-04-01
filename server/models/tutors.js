@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
+const TutorSchema = new mongoose.Schema({
   email: {
     type: String,
     trim: true,
@@ -16,6 +16,16 @@ const UserSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
+  qualification: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+  experience: {
+    type: String,
+    trim: true,
+    required: true,
+  },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Tutor", TutorSchema);
