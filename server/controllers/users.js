@@ -50,4 +50,16 @@ const CreateParentAndStudent = async (req, res) => {
   // res.send("Creating parent and student");
 };
 
-module.exports = { CreateUserAndTutor, CreateParentAndStudent };
+const CheckUser = async (req, res) => {
+  try {
+    const { id: tutor_email } = req.params;
+    const user = await User.findOne({
+      email: tutor_email,
+    });
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports = { CreateUserAndTutor, CreateParentAndStudent, CheckUser };

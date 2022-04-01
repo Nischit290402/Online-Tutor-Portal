@@ -1,5 +1,5 @@
 const login_info = {
-  email: "tutor1@gmail.com",
+  email: "tutor2@gmail.com",
   role: "tutor",
   name: "tutor1",
 };
@@ -27,7 +27,7 @@ const getCourse = async (req, res) => {
       _id: courseID,
       tutor_email: login_info.email,
     });
-    res.status(200).json(course); // this returns an array. Use {all_courses} to return class/object
+    res.status(200).json(course);
   } catch (err) {
     res.status(500).json(err);
   }

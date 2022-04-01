@@ -15,7 +15,7 @@ import GetParentCourse from "./pages/parents/GetParentCourse";
 import EnrollCourse from "./pages/parents/EnrollCourse";
 import GetAllCourses from "./pages/all/GetAllCourses";
 import CheckEnroll from "./pages/parents/CheckEnroll";
-import CheckUser from "./pages/CheckUser/check";
+import CheckUser from "./pages/users/CheckUser";
 import CreateUserAndTutor from "./pages/users/CreateUserAndTutor";
 import CreateParentAndStudent from "./pages/users/CreateParentAndStudent";
 
@@ -46,7 +46,7 @@ const App = () => {
             <Route path="/tutors/create-course" element={<CreateCourse />} />
             <Route path="/tutors/:id" element={<GetTutorCourse />} />
             <Route path="/all/courses" element={<GetAllCourses />} />
-            <Route path="/check" element={<CheckUser />} />
+            <Route path="/users/check" element={<CheckUser />} />
             <Route path="/users/createTutor" element={<CreateUserAndTutor />} />
             <Route
               path="/users/createParent"

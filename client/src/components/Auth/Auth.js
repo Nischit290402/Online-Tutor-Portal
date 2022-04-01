@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 // import useStyles from './styles';
 import Icon from "./icon";
 import { AUTH } from "../../constants/actionTypes";
-
-export var GAuth = {};
+const user = JSON.parse(localStorage.getItem("profile"));
 
 const Auth = () => {
   const dispatch = useDispatch();
@@ -15,13 +14,13 @@ const Auth = () => {
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
-    GAuth = result;
-    // console.log(GAuth);
+
     const token = res?.tokenId;
     console.log(res);
     try {
       dispatch({ type: AUTH, data: { result, token } });
-
+      console.log(user);
+      // setUser(result)
       navigation("/");
     } catch (error) {
       console.log(error);
