@@ -8,7 +8,7 @@ const userRoutes = require("./routes/users");
 const allRoutes = require("./routes/all");
 const checkRoutes = require("./routes/check");
 const connectDB = require("./db/connect");
-require("dotenv").config();
+require('dotenv').config()
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -37,11 +37,10 @@ app.use("/check", checkRoutes);
 app.use("/users", userRoutes);
 app.use("/all", allRoutes);
 
-port = process.env.port || 5000;
 const start = async () => {
   try {
     await connectDB(process.env.CONNECTION_STRING);
-    app.listen(5000, () => {
+    app.listen(process.env.PORT, () => {
       console.log("Server is listening on port 5000....");
     });
   } catch (error) {
