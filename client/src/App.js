@@ -27,7 +27,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 const App = () => {
   const user = JSON.parse(localStorage.getItem("profile"));
-  // console.log(user);
+
   return (
     <>
       <Router>
@@ -41,10 +41,7 @@ const App = () => {
             <Route path="/parents" element={<GetAllParentCourses />} />
             <Route path="/parents/check-enroll/:id" element={<CheckEnroll />} />
             <Route path="/parents" element={<GetAllCourses />} />
-            <Route
-              path="/parents/enroll-course/:id"
-              element={<EnrollCourse />}
-            />
+            <Route path="/parents/enroll-course/:id" element={<EnrollCourse />}/>
             <Route path="/parents/:id" element={<GetParentCourse />} />
             <Route path="/tutors" element={<GetTutorCourses />} />
             <Route path="/tutors/create-course" element={<CreateCourse />} />
@@ -52,20 +49,13 @@ const App = () => {
             <Route path="/all/courses" element={<GetAllCourses />} />
             <Route path="/users/check" element={<CheckUser />} />
             <Route path="/users/createTutor" element={<CreateUserAndTutor />} />
-            <Route
-              path="/users/createParent"
-              element={<CreateParentAndStudent />}
-            />
+            <Route path="/users/createParent" element={<CreateParentAndStudent />} />
             <Route path="/register" element={<RegistrationForm />} />
             <Route path="/register2" element={<RegistrationForm1 />} />
             <Route path="/student" element={<Student />} />
             <Route path="/courseinfo/:id" element={<CourseInfo />} />
-            <Route
-              path="/parents/enroll-course/:id"
-              element={<EnrollCourse />}
-            />
+            <Route path="/parents/enroll-course/:id" element={<EnrollCourse />} />
           </Routes>
-          {/* <Cards /> */}
         </div>
         <Footer />
       </Router>
