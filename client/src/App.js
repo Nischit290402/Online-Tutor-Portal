@@ -7,7 +7,6 @@ import Courses from "./pages/courses/courses";
 import Student from "./pages/homepage/student";
 import CourseInfo from "./pages/courseinfo/CourseInfo";
 import Tutorinfo from "./pages/tutorinfo/tutorinfo";
-
 import RegistrationForm from "./pages/registration/reg";
 import RegistrationForm1 from "./pages/registration/reg2";
 
@@ -22,11 +21,12 @@ import CheckEnroll from "./pages/parents/CheckEnroll";
 import CheckUser from "./pages/users/CheckUser";
 import CreateUserAndTutor from "./pages/users/CreateUserAndTutor";
 import CreateParentAndStudent from "./pages/users/CreateParentAndStudent";
-
+import Messages from "./pages/messages/messages";
+import CreateRoom from "./pages/createroom/createroom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 const App = () => {
-  const user = JSON.parse(localStorage.getItem("profile"));
 
   return (
     <>
@@ -55,6 +55,8 @@ const App = () => {
             <Route path="/student" element={<Student />} />
             <Route path="/courseinfo/:id" element={<CourseInfo />} />
             <Route path="/parents/enroll-course/:id" element={<EnrollCourse />} />
+            <Route path="/messages/:id" element={<Messages />} />
+            <Route path="/createroom" element={<CreateRoom />} />
           </Routes>
         </div>
         <Footer />
