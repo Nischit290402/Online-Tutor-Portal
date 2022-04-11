@@ -54,6 +54,7 @@ app.use("/subject", subjectRoutes);
 port = process.env.port || 5000;
 const start = async () => {
   try {
+    console.log(process.env)
     await connectDB(process.env.CONNECTION_STRING);
     app.listen(5000, () => {
       console.log("Server is listening on port 5000....");
