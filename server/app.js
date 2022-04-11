@@ -9,7 +9,10 @@ const allRoutes = require("./routes/all");
 const checkRoutes = require("./routes/check");
 const subjectRoutes = require("./routes/subject");
 const connectDB = require("./db/connect");
-require("dotenv").config();
+require('dotenv').config()
+
+const Tutor = require("./models/tutors");
+const { log } = require("async");
 
 const Tutor = require("./models/tutors");
 
@@ -52,11 +55,12 @@ app.use("/all", allRoutes);
 app.use("/subject", subjectRoutes);
 // process.env.CONNECTION_STRING
 port = process.env.port || 5000;
+
 const start = async () => {
   try {
     console.log(process.env)
     await connectDB(process.env.CONNECTION_STRING);
-    app.listen(5000, () => {
+    app.listen(process.env.PORT, () => {
       console.log("Server is listening on port 5000....");
     });
   } catch (error) {

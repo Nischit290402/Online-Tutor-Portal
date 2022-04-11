@@ -16,6 +16,10 @@ const CourseSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
+  index: Number,
+  title: String,
+  image: String,
+  driveURL: String,
 });
 
 module.exports = mongoose.model("Course", CourseSchema);
