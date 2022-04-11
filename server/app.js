@@ -7,7 +7,7 @@ const studentRoutes = require("./routes/students");
 const userRoutes = require("./routes/users");
 const allRoutes = require("./routes/all");
 const checkRoutes = require("./routes/check");
-// const searchRoutes = require("./routes/search");
+const subjectRoutes = require("./routes/subject");
 const connectDB = require("./db/connect");
 require('dotenv').config()
 
@@ -50,7 +50,8 @@ app.use("/students", studentRoutes);
 app.use("/check", checkRoutes);
 app.use("/users", userRoutes);
 app.use("/all", allRoutes);
-
+app.use("/subject", subjectRoutes);
+// process.env.CONNECTION_STRING
 port = process.env.port || 5000;
 
 const start = async () => {

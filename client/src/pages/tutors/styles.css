@@ -11,17 +11,12 @@
     padding-top: 20px; */
   }
 
-.cont {
+.container {
     margin: 0 auto;
     max-width: 1120px;
     padding: 0 4vw;
 }
 
-hr.style { 
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  }
 
 .site-banner {
     margin: 0 auto;

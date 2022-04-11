@@ -5,17 +5,19 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Auth from "./../Auth/Auth";
 import "./styles.css";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
-import { BiSearchAlt2 } from "react-icons/bi";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as actionType from "../../constants/actionTypes";
-import NavDropdown from "react-bootstrap/NavDropdown";
+// import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
 import pic from "./../../images/profile.jpg";
+import SearchBar from "../Search/Search";
+import SearchBarT from "../Search/SearchT";
+
 
 const Navbarr = () => {
+  let url = window.location.href.substring(21,);
+  
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const location = useLocation();
@@ -28,6 +30,7 @@ const Navbarr = () => {
 
     setUser(null);
   };
+  
 
   useEffect(() => {
     const token = user?.token;
@@ -61,17 +64,10 @@ const Navbarr = () => {
             <Nav.Link href="/courses">Courses</Nav.Link>
           </Nav>
           <Nav className="me-auto">
-            <InputGroup className="me">
-              <FormControl
-                placeholder="Search"
-                aria-label="Example text with button addon"
-                aria-describedby="basic-addon1"
-              />
-              <Button variant="outline-secondary" id="button-addon1">
-                <BiSearchAlt2 />
-              </Button>
-            </InputGroup>
+          {url === "/courses" || url.substring(0,11) === "/courseinfo" ? <SearchBar />:''}
+          {url === "/tutors" || url.substring(0,10) === "/tutorinfo" ? <SearchBarT />:''}
           </Nav>
+          
           <Nav>
             {user?.result ? (
               <>
