@@ -4,9 +4,12 @@ import Navbarr from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Landing from "./pages/landing/landing";
 import Courses from "./pages/courses/courses";
+import Tutors from "./pages/tutors/tutors";
 import Student from "./pages/homepage/student";
 import CourseInfo from "./pages/courseinfo/CourseInfo";
-import Tutorinfo from "./pages/tutorinfo/tutorinfo";
+//import Tutorinfo from "./pages/tutorinfo/tutorinfo";
+import Tutorinfo from "./pages/tutorinfo/TutorInformation";
+
 import RegistrationForm from "./pages/registration/reg";
 import RegistrationForm1 from "./pages/registration/reg2";
 
@@ -35,15 +38,16 @@ const App = () => {
         <div className="main">
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/tutorinfo" element={<Tutorinfo />} />
+            <Route path="/tutorinformation/:id" element={<Tutorinfo />} />
             <Route path="/courses" element={<Courses />} />
-            <Route path="/courseinfo" element={<CourseInfo />} />
+            {/* <Route path="/courseinfo" element={<CourseInfo />} /> */}
             <Route path="/parents" element={<GetAllParentCourses />} />
             <Route path="/parents/check-enroll/:id" element={<CheckEnroll />} />
             <Route path="/parents" element={<GetAllCourses />} />
             <Route path="/parents/enroll-course/:id" element={<EnrollCourse />}/>
             <Route path="/parents/:id" element={<GetParentCourse />} />
-            <Route path="/tutors" element={<GetTutorCourses />} />
+            {/* <Route path="/tutors" element={<GetTutorCourses />} /> */}
+            <Route path="/tutors" element={<Tutors />} />
             <Route path="/tutors/create-course" element={<CreateCourse />} />
             <Route path="/tutors/:id" element={<GetTutorCourse />} />
             <Route path="/all/courses" element={<GetAllCourses />} />

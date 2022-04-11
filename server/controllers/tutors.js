@@ -1,3 +1,7 @@
+const fs = require("fs");
+const readline = require("readline");
+const { google } = require("googleapis");
+
 const login_info = {
   email: "tutor2@gmail.com",
   role: "tutor",
@@ -37,6 +41,7 @@ const createCourse = async (req, res) => {
   try {
     const data = req.body;
     data.tutor_email = login_info.email;
+
     const course = await Course.create(data);
     res.status(201).json(course);
   } catch (err) {

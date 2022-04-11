@@ -1,26 +1,24 @@
-import CourseCard from "../../components/CourseCard/CourseCard";
+import TutorCard from "../../components/TutorCard/TutorCard";
 import { Container,Paper,Grid } from "@mui/material";
-import "./styles.css"
+import "./styles.css";
 
-const Courses=()=> {
+const Tutors=()=> {
 
 
     return(
         <>
-        <br/><br/>
         <header className="site-head">
             <div className="container">
             <div className="site-banner">
-            <h1 className="site-banner-title">Courses</h1>
-            <p className="site-banner-desc">Explore your interests</p>
+            <h1 className="site-banner-title">Tutors</h1>
+            <p className="site-banner-desc">Explore renowned tutors</p>
         </div>
             </div>
         </header>
-        
         <div>
         <Grid padding={6}>
             <Paper variant="outlined">
-                    <CourseCard />
+                    <TutorCard />
             </Paper>
         </Grid>   
         </div>  
@@ -30,4 +28,4 @@ const Courses=()=> {
      
 }
 
-export default Courses;
+export default Tutors;

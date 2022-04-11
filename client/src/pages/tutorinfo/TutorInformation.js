@@ -3,14 +3,14 @@ import Container  from 'react-bootstrap/Container';
 import { useLocation } from 'react-router-dom'
 import "./styles.css"
 import { Grid, Paper } from "@mui/material";
-import CourseCard from "../../components/CourseCard/CourseCard";
+import TutorCard from "../../components/TutorCard/TutorCard";
 
 const CourseInfo=()=>{
     const location = useLocation()
-    const {desc} = location.state
-    const {course} = location.state
-    const {title} = location.state
-    const {image} = location.state
+    const {qual} = location.state
+    const {exp} = location.state
+    const {name} = location.state
+    const {email} = location.state
 
     const myStyle = {
         backgroundImage: "linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url()",
@@ -29,30 +29,30 @@ const CourseInfo=()=>{
         <header className="site-head">
             <div className="cont">
             <div className="site-banner">
-            <h1 className="site-banner-title">Course Information</h1>
+            <h1 className="site-banner-title">Tutor Information</h1>
             {/* <p className="site-banner-desc">Explore renowned tutors</p> */}
         </div>
             </div>
         </header><br/><br/>
         <Container>
-        
         <Paper variant="outlined">
         <Container>
         
         <div className="card" style={myStyle}>
         <Container>
           <div className="card-block">
-            <h2>{title}</h2>
+            <h2>{name}</h2>
             <hr className="style"/>
             <div className="row">
               <div className="col-md-4">
-                <p><img src={image} className="img-responsive" width="300" height="180" alt={course}/></p>
+                <p><img src="#" className="img-responsive" width="300" height="180" alt={name}/></p>
               </div>
               <div className="col-md-8">
 
-                <h4>{course}</h4>
-              <p>{desc}</p>
-                <br/><br/><br/><br/>
+                <h4>{email}</h4>
+                
+                <p>{qual}</p>
+              <br/><br/><br/><br/>
                 <p><button ><b>Enroll Now »</b></button></p>
 
               </div>
@@ -68,10 +68,10 @@ const CourseInfo=()=>{
         <Container>
             <Paper variant="outlined">
                 <Container>
-                <h2>View More Courses</h2>
+                <h2>View More Tutors</h2>
                 <hr/>
                 <Grid padding={5}>
-                    <CourseCard />
+                    <TutorCard />
                 </Grid>
                 </Container>
             </Paper>

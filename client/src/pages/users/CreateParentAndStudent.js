@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./cpas.css";
 
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(user);
+//console.log(user);
 class CreateParentAndStudent extends Component {
   constructor(props) {
     super(props);
@@ -35,42 +36,47 @@ class CreateParentAndStudent extends Component {
       this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Parent Name: {name}</label>
-          </div>
-          <div>
-            <label>Parent Email: {email}</label>
-          </div>
-          <div>
-            <label>Student Name: </label>
-            <input
-              type="text"
-              name="student_name"
-              value={student_name}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-          <div>
-            <label>Student email: </label>
-            <input
-              type="text"
-              name="student_email"
-              value={student_email}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-          <div>
-            <label>year_of_study: </label>
-            <input
-              type="number"
-              name="year_of_study"
-              value={year_of_study}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-          <div>
-            <button type="submit">Submit</button>
+        <form className="form" onSubmit={this.handleSubmit}>
+          <div className="form-body">
+            <div>
+              <label className="form__label">Parent Name: {name}</label>
+            </div>
+            <div>
+              <label className="form__label">Parent Email: {email}</label>
+            </div>
+            <div>
+              <label className="form__label">Student Name: </label>
+              <input
+                className="form__input"
+                type="text"
+                name="student_name"
+                value={student_name}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div>
+              <label className="form__label">Student email: </label>
+              <input
+                className="form__input"
+                type="text"
+                name="student_email"
+                value={student_email}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div>
+              <label className="form__label">Year of study: </label>
+              <input
+                className="form__input"
+                type="number"
+                name="year_of_study"
+                value={year_of_study}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
           </div>
         </form>
       </div>
