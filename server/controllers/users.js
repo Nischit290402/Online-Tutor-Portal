@@ -62,4 +62,67 @@ const CheckUser = async (req, res) => {
   }
 };
 
-module.exports = { CreateUserAndTutor, CreateParentAndStudent, CheckUser };
+const getUserByEmail=async(req,res)=>{
+  try {
+    const {email:email}=req.params;
+    const user=await User.findOne({
+      email:email,
+    });
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
+const UserModel =require('../models/users');
+
+const onGetAllUsers= async (req, res) => {
+    try {
+      const users = await UserModel.getUsers();
+      return res.status(200).json({ success: true, users });
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({ success: false, error: error })
+    }
+  };
+  const onGetUserById= async (req, res) => {
+    try {
+      const user = await UserModel.getUserById(req.params.id);
+      return res.status(200).json({ success: true, user });
+    } catch (error) {
+      return res.status(500).json({ success: false, error: error })
+    }
+  };
+const  onCreateUser= async (req, res) => {
+    try {
+      // const validation = makeValidation(types => ({
+      //   payload: req.body,
+      //   checks: {
+      //     firstName: { type: types.string },
+      //     lastName: { type: types.string },
+      //     type: { type: types.enum, options: { enum: USER_TYPES } },
+      //   }
+      // }));
+      // if (!validation.success) return res.status(400).json({ ...validation });
+
+      const { firstName, lastName, type } = req.body;
+      const user = await UserModel.createUser(firstName, lastName, type);
+      return res.status(200).json({ success: true, user });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ success: false, error: error })
+    }
+  };
+  const onDeleteUserById= async (req, res) => {
+    try {
+      const user = await UserModel.deleteByUserById(req.params.id);
+      return res.status(200).json({ 
+        success: true, 
+        message: `Deleted a count of ${user.deletedCount} user.` 
+      });
+    } catch (error) {
+      return res.status(500).json({ success: false, error: error })
+    }
+  };
+
+module.exports = {onDeleteUserById,onCreateUser,onGetAllUsers,onGetUserById, CreateUserAndTutor, CreateParentAndStudent, CheckUser, getUserByEmail };
