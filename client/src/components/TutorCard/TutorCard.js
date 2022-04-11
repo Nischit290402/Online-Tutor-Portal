@@ -21,25 +21,25 @@ const breakPoints = [
 
 ];
 
-const renderCard = (CardInfo) => {
+const renderCard = (TutorInfo) => {
   return (
     
-    <Card xs={{ maxWidth: 345 }} key={CardInfo._id} className="box" >
-      <img src={CardInfo.image} alt={CardInfo.title} height="150" width="256"/>
+    <Card xs={{ maxWidth: 345 }} key={TutorInfo._id} className="box" >
+      <img src='#' alt={TutorInfo.name} height="150" width="256"/>
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
-          {CardInfo.title}
+          {TutorInfo.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {CardInfo.course}
-        </Typography>
+        {/* <Typography variant="body2" color="text.secondary">
+          {TutorInfo.course}
+        </Typography> */}
       </CardContent>
       <CardActions>
         <Button size="small">BUY</Button>
         <Button 
           size="small" 
           >
-            <Link to={'/courseinfo/'+ CardInfo._id} state={{desc: CardInfo.desc, course: CardInfo.course, title: CardInfo.title, image: CardInfo.image}} >Learn More</Link>
+            <Link to={'/tutorinformation/'+ TutorInfo._id} state={{qual: TutorInfo.qual, exp: TutorInfo.exp, name: TutorInfo.name, email: TutorInfo.email}} >Learn More</Link>
         </Button>
         
       </CardActions>
@@ -52,35 +52,36 @@ class CourseCard extends Component {
     super(props);
 
     this.state = {
-      subjects: [],
+      tutors: [],
     };
   }
 
   componentDidMount() {
-    axios.get("/subject").then((response) => {
-      this.setState({ subjects: response.data });
-      //console.log(response.data);
+    axios.get("/tutors-info").then((response) => {
+      this.setState({ tutors: response.data });
+      console.log(response.data);
     });
   }
 
   render() {
-    const { subjects } = this.state;
-    var CardInfo = [];
-    for (let i = 0; i < subjects.length; i++) {
+    const { tutors } = this.state;
+    var TutorInfo = [];
+    for (let i = 0; i < tutors.length; i++) {
       let x = {};
-      x._id = subjects[i]._id;
-      x.image = subjects[i].image;
-      x.title = subjects[i].title;
-      x.course = subjects[i].course;
-      x.desc = subjects[i].desc;
-      CardInfo.push(x);
+      x._id = tutors[i]._id;
+      //x.image = tutors[i].image;
+      x.email = tutors[i].email;
+      x.name = tutors[i].name;
+      x.qual = tutors[i].qualification;
+      x.exp = tutors[i].experience;
+      TutorInfo.push(x);
     }
     
     return (
         <>
         <div className="grid">
           <Carousel breakPoints={breakPoints}>
-            {CardInfo.map(renderCard)}
+            {TutorInfo.map(renderCard)}
           </Carousel>
         </div>
         </>

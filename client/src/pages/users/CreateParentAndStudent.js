@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(user);
+//console.log(user);
 class CreateParentAndStudent extends Component {
   constructor(props) {
     super(props);

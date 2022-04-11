@@ -61,7 +61,7 @@ const Cards = () => {
         item
         spacing={2}
         direction="row"
-        justifyContent="space-between"
+        // justifyContent="space-between"
         alignItems="baseline"
       >
         <BasicParentCard />
