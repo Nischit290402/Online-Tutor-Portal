@@ -14,8 +14,6 @@ require('dotenv').config()
 const Tutor = require("./models/tutors");
 const { log } = require("async");
 
-const Tutor = require("./models/tutors");
-
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -58,7 +56,6 @@ port = process.env.port || 5000;
 
 const start = async () => {
   try {
-    console.log(process.env)
     await connectDB(process.env.CONNECTION_STRING);
     app.listen(process.env.PORT, () => {
       console.log("Server is listening on port 5000....");
