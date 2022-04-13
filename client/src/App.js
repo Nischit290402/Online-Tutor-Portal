@@ -23,6 +23,7 @@ import CheckUser from "./pages/users/CheckUser";
 import CreateUserAndTutor from "./pages/users/CreateUserAndTutor";
 import CreateParentAndStudent from "./pages/users/CreateParentAndStudent";
 
+import Upload from "./pages/upload/upload";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 const App = () => {
@@ -58,6 +59,7 @@ const App = () => {
             />
             <Route path="/register" element={<RegistrationForm />} />
             <Route path="/register2" element={<RegistrationForm1 />} />
+            <Route path="/upload/:id" element={<Upload />} />
             <Route path="/student" element={<Student />} />
             <Route path="/courseinfo/:id" element={<CourseInfo />} />
             <Route

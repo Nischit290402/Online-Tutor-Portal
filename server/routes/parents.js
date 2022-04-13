@@ -9,8 +9,12 @@ const {
   checkEnroll,
 } = require("../controllers/parents");
 
-router.route("/").get(getAllCourses);
-router.route("/check-enroll/:id").get(checkEnroll);
-router.route("/:id").get(getCourse).post(enrollCourse).delete(unenrollCourse);
+router.route("/all/:uid").get(getAllCourses);
+router.route("/check-enroll/:id/:uid").get(checkEnroll);
+router
+  .route("/:id/:uid")
+  .get(getCourse)
+  .post(enrollCourse)
+  .delete(unenrollCourse);
 
 module.exports = router;

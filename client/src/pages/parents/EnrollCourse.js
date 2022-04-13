@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 
 let url = window.location.pathname;
-// console.log(url);
+const user = JSON.parse(localStorage.getItem("profile"));
+console.log(url);
+
+if (user && user?.result) {
+  url = url + "/" + user.result.email;
+} else {
+  url = url + "/" + "invalidEmail";
+}
 
 class EnrollCourse extends Component {
   constructor(props) {

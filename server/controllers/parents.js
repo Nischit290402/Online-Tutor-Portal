@@ -6,14 +6,23 @@ const login_info = {
 };
 
 const Course = require("../models/courses");
+const Parent = require("../models/parents");
 const Enrolled = require("../models/enrolled");
 
 //This contains functions of all routes accessed by the parents, which
 //includes getting all courses available, and enrolling/unenrolling their child from a course.
 
+//done
 const getAllCourses = async (req, res) => {
   //Get all courses
+  const { uid: user_email } = req.params;
   try {
+    const get_parent = await Parent.findOne({ email: user_email });
+    login_info.email = user_email;
+    login_info.name = get_parent.name;
+    login_info.child_email = get_parent.student_email;
+    console.log(login_info);
+
     const all_courses = await Course.find({});
     res.status(200).json(all_courses); // this returns an array. Use {all_courses} to return class/object
   } catch (err) {
@@ -21,6 +30,7 @@ const getAllCourses = async (req, res) => {
   }
 };
 
+//done
 const getCourse = async (req, res) => {
   try {
     const { id: courseID } = req.params;
@@ -35,8 +45,13 @@ const utc = new Date().toJSON().slice(0, 10);
 
 //ToDo: Check if student is already enrolled
 const enrollCourse = async (req, res) => {
-  const { id: courseID } = req.params;
+  const { id: courseID, uid: user_email } = req.params;
   try {
+    const get_parent = await Parent.findOne({ email: user_email });
+    login_info.email = user_email;
+    login_info.name = get_parent.name;
+    login_info.child_email = get_parent.student_email;
+
     const find_course = await Course.find({ _id: courseID });
 
     console.log(find_course);
@@ -56,8 +71,13 @@ const enrollCourse = async (req, res) => {
 };
 
 const unenrollCourse = async (req, res) => {
-  const { id: courseID } = req.params;
+  const { id: courseID, uid: user_email } = req.params;
   try {
+    const get_parent = await Parent.findOne({ email: user_email });
+    login_info.email = user_email;
+    login_info.name = get_parent.name;
+    login_info.child_email = get_parent.student_email;
+
     const unenrolled_course = await Enrolled.findOneAndDelete({
       course_ID: courseID,
       student_email: login_info.child_email,
@@ -70,8 +90,13 @@ const unenrollCourse = async (req, res) => {
 
 //Resolve error
 const checkEnroll = async (req, res) => {
-  const { id: courseID } = req.params;
+  const { id: courseID, uid: user_email } = req.params;
   try {
+    const get_parent = await Parent.findOne({ email: user_email });
+    login_info.email = user_email;
+    login_info.name = get_parent.name;
+    login_info.child_email = get_parent.student_email;
+
     const check = await Enrolled.find({
       course_ID: courseID,
       student_email: login_info.child_email,

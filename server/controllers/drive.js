@@ -1,9 +1,6 @@
 const fs = require("fs");
-const readline = require("readline");
 const { google } = require("googleapis");
 const async = require("async");
-const { file } = require("googleapis/build/src/apis/file");
-const { create } = require("domain");
 const { log } = require("console");
 
 require("dotenv").config();
@@ -11,7 +8,8 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URL = process.env.REDIRECT_URL;
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
-console.log(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL, REFRESH_TOKEN);
+// console.log(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL, REFRESH_TOKEN);
+
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
@@ -25,6 +23,7 @@ function createfolder(f_name) {
     name: f_name,
     mimeType: "application/vnd.google-apps.folder",
   };
+  var fid = "";
   drive.files.create(
     {
       resource: fileMetadata,
@@ -35,10 +34,12 @@ function createfolder(f_name) {
         // Handle error
         console.error(err);
       } else {
-        console.log("Folder Id: ", file.data.id);
+        // console.log("Folder Id: ", file.data.id);
+        fid = file.data.id;
       }
     }
   );
+  return fid;
 }
 function uploadfile() {
   var fileMetadata = {
@@ -106,5 +107,11 @@ function sharefolder(fid, to_email) {
   );
 }
 
-// createfolder();
-// sharefolder("1UwCS96OHBxB8sOlt-ZXcDSO7h4_2GZ7L", "cse200001055@iiti.ac.in");
+const z = createfolder("jfifo");
+console.log(z);
+
+module.exports = {
+  createfolder,
+  sharefolder,
+  uploadfile,
+};

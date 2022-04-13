@@ -1,5 +1,9 @@
 const express = require("express");
 const app = express();
+
+var cors = require("cors");
+var multer = require("multer");
+
 const bodyParser = require("body-parser");
 const tutorRoutes = require("./routes/tutors");
 const parentRoutes = require("./routes/parents");
@@ -7,6 +11,7 @@ const studentRoutes = require("./routes/students");
 const userRoutes = require("./routes/users");
 const allRoutes = require("./routes/all");
 const checkRoutes = require("./routes/check");
+const uploadRoutes = require("./routes/upload");
 // const searchRoutes = require("./routes/search");
 const connectDB = require("./db/connect");
 require("dotenv").config();
@@ -17,6 +22,7 @@ const { log } = require("async");
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Landing page");
@@ -44,6 +50,7 @@ const getAllTutors = async (req, res) => {
 };
 app.get("/tutors-info", getAllTutors);
 
+app.use("/upload", uploadRoutes);
 app.use("/tutors", tutorRoutes);
 app.use("/parents", parentRoutes);
 app.use("/students", studentRoutes);

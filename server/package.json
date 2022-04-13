@@ -18,10 +18,12 @@
   "homepage": "https://github.com/Paarth002/Online-Tutor-Portal#readme",
   "dependencies": {
     "async": "^3.2.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "googleapis": "^39.2.0",
-    "mongoose": "^6.2.4"
+    "mongoose": "^6.2.4",
+    "multer": "^1.4.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
