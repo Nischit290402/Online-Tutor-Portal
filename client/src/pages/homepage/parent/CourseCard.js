@@ -35,11 +35,11 @@ const renderCard = (CardInfo) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button 
+        {/* <Button 
           size="small" 
           >
             <Link to={'/courseinfo/'+ CardInfo._id} state={{id: CardInfo._id, desc: CardInfo.desc, course: CardInfo.course, title: CardInfo.title, image: CardInfo.image}} >Learn More</Link>
-        </Button>
+        </Button> */}
         
       </CardActions>
     </Card>
@@ -52,6 +52,7 @@ class CourseCard extends Component {
 
     this.state = {
       courses: [],
+      encourses: []
     };
   }
 
@@ -60,23 +61,35 @@ class CourseCard extends Component {
     .get("/parents")
     .then((response) => {
       this.setState({ courses: response.data });
-      //console.log(response.data);
+      // console.log(response.data);
+    });
+    axios
+    .get("/students")
+    .then((response) => {
+      this.setState({ encourses: response.data });
+      // console.log(response.data);
     });
   }
 
   render() {
-    const { courses: courses } = this.state;
+    const { courses: courses, encourses: encourses } = this.state;
+    console.log(courses);
+    console.log(encourses);
     var CardInfo = [];
-    for (let i = 0; i < courses.length; i++) {
-      let x = {};
-      x._id = courses[i]._id;
-      x.image = courses[i].image;
-      x.title = courses[i].title;
-      x.course = courses[i].name;
-      x.desc = courses[i].description;
-      x.more_url = "courses/" + courses[i]._id;
-      CardInfo.push(x);
+    for (let i = 0; i < encourses.length; i++) {
+      for(let j = 0; j < courses.length; j++){
+        let x = {};
+          if(encourses[i].course_ID===courses[j]._id){
+            x._id = courses[j]._id;
+            x.image = courses[j].image;
+            x.title = courses[j].title;
+            x.course = courses[j].name;
+            x.desc = courses[j].description;
+            CardInfo.push(x);
+          }
+      }
     }
+    console.log(CardInfo);
     return (
         <>
         <div className="grid">

@@ -5,7 +5,7 @@ import axios from "axios";
 
 let url = window.location.pathname;
 const user = JSON.parse(localStorage.getItem("profile"));
-
+// console.log(user);
 if (user && user?.result) {
   url = url + "/" + user.result.email;
 } else {
@@ -47,7 +47,7 @@ class CheckUser extends Component {
         } else if (userDetails.role === "parent") {
           return <Navigate to="/parents" />;
         } else if (userDetails.role === "tutor") {
-          return <Navigate to="/tutors" />;
+          return <Navigate to="/tutor" />;
         } else {
           return <Navigate to="/" />;
         }

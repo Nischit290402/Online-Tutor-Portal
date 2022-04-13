@@ -45,7 +45,7 @@ const SearchBar=()=> {
     },[])
  
     const f=()=>{
-       axios.get("/subject")
+       axios.get("/parents")
    .then((response) => {
      getdata(response.data);
      //console.log(response.data);
@@ -60,12 +60,12 @@ const SearchBar=()=> {
       var CardInfo = [];
       let y = {};
       for (let i = 0; i < subjects.length; i++) {  
-        if(subjects[i].course===event.target.defaultValue)
+        if(subjects[i].name===event.target.defaultValue)
         {  y._id = subjects[i]._id;
           y.image = subjects[i].image;
           y.title = subjects[i].title;
-          y.course = subjects[i].course;
-          y.desc = subjects[i].desc;
+          y.course = subjects[i].name;
+          y.desc = subjects[i].description;
           CardInfo.push(y);
         }
       }
@@ -79,7 +79,7 @@ const SearchBar=()=> {
     var SearchInfo = [];
     for (let i = 0; i < subjects.length; i++) {
       let x = {};
-      x.course = subjects[i].course;
+      x.course = subjects[i].name;
       x.title = subjects[i].title;
       SearchInfo.push(x);
     }
@@ -136,7 +136,7 @@ const SearchBar=()=> {
             selectOnFocus
             options={SearchInfo}
             getOptionLabel={(option) => option.course}
-            groupBy={(option) => option.title.substring(0,2)}
+            //groupBy={(option) => option.title.substring(0,2)}
             loading={loading}
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Course" InputProps={{...params.InputProps,endAdornment: (
