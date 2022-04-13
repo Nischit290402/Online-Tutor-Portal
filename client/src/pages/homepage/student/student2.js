@@ -27,26 +27,11 @@ const Courselist=()=>{
         <Grid sx={{ flexGrow: 1 }} container spacing={2}>
           <Grid item xs={12}>
             <Grid container justifyContent="center" spacing={spacing}>
-                <Grid item>
-                  <Paper
-                    sx={{
-                      height: 140,
-                      width: 200,
-                      backgroundColor: (theme) =>
-                        theme.palette.mode === 'dark' ? '#1A2027' : '#e63946',
-                    }}
-                  >
-                  <Container><h4>Put what u want</h4>
-                    <hr/>
-                    <div>Same here</div>
-                  </Container>
-                  </Paper>
-                </Grid>
               <Grid item>
               <Grid item>
                 <Paper
                   sx={{
-                    height: 510,
+                    height: 560,
                     width: 1116,
                     backgroundColor: (theme) =>
                       theme.palette.mode === 'dark' ? '#1A2027' : '#457b9d',
