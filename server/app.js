@@ -1,5 +1,9 @@
 const express = require("express");
 const app = express();
+
+var cors = require("cors");
+var multer = require("multer");
+
 const bodyParser = require("body-parser");
 const tutorRoutes = require("./routes/tutors");
 const parentRoutes = require("./routes/parents");
@@ -7,15 +11,17 @@ const studentRoutes = require("./routes/students");
 const userRoutes = require("./routes/users");
 const allRoutes = require("./routes/all");
 const checkRoutes = require("./routes/check");
+const uploadRoutes = require("./routes/upload");
+// const searchRoutes = require("./routes/search");
 const subjectRoutes = require("./routes/subject");
 const connectDB = require("./db/connect");
-const WebSockets=require("./Websockets");
-const userRouter =require( "./routes/user");
-const chatRoomRouter =require( "./routes/chatroom.js");
-const http=require("http");
-const cors=require('cors');
+const WebSockets = require("./Websockets");
+const userRouter = require("./routes/user");
+const chatRoomRouter = require("./routes/chatroom.js");
+const http = require("http");
+
 app.use(cors());
-require('dotenv').config()
+require("dotenv").config();
 
 const Tutor = require("./models/tutors");
 const { log } = require("async");
@@ -23,6 +29,7 @@ const { log } = require("async");
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Landing page");
@@ -50,13 +57,14 @@ const getAllTutors = async (req, res) => {
 };
 app.get("/tutors-info", getAllTutors);
 
+app.use("/upload", uploadRoutes);
 app.use("/tutors", tutorRoutes);
 app.use("/parents", parentRoutes);
 app.use("/students", studentRoutes);
 app.use("/check", checkRoutes);
 app.use("/users", userRoutes);
 app.use("/user", userRouter);
-app.use("/room",  chatRoomRouter);
+app.use("/room", chatRoomRouter);
 app.use("/all", allRoutes);
 app.use("/subject", subjectRoutes);
 // process.env.CONNECTION_STRING
@@ -78,13 +86,12 @@ start();
 const utc = new Date().toJSON().slice(0, 10);
 console.log(utc);
 
-
 /** Create HTTP server. */
 const server = http.createServer(app);
-const socketio=require("socket.io")(server,{
-  cors:{
-    origin:'*',
-  }
+const socketio = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+  },
 });
 let users = [];
 
@@ -120,9 +127,10 @@ global.io.on("connection", (socket) => {
   });
 
   //send and get message
-  socket.on("sendMessage", (userId,text) => {
+  socket.on("sendMessage", (userId, text) => {
     global.io.emit("getMessage", {
-      userId,text,
+      userId,
+      text,
     });
   });
 
@@ -137,5 +145,5 @@ global.io.on("connection", (socket) => {
 server.listen(5000);
 /** Event listener for HTTP server "listening" event. */
 server.on("listening", () => {
-  console.log(`Listening on port:: http://localhost:5000/`)
+  console.log(`Listening on port:: http://localhost:5000/`);
 });

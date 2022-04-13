@@ -25,13 +25,14 @@ import CheckEnroll from "./pages/parents/CheckEnroll";
 import CheckUser from "./pages/users/CheckUser";
 import CreateUserAndTutor from "./pages/users/CreateUserAndTutor";
 import CreateParentAndStudent from "./pages/users/CreateParentAndStudent";
+
+import Upload from "./pages/upload/upload";
 import Messages from "./pages/messages/messages";
 import CreateRoom from "./pages/createroom/createroom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-
   return (
     <>
       <Router>
@@ -45,7 +46,10 @@ const App = () => {
             <Route path="/parents" element={<GetAllParentCourses />} />
             <Route path="/parents/check-enroll/:id" element={<CheckEnroll />} />
             {/* <Route path="/parents" element={<GetAllCourses />} /> */}
-            <Route path="/parents/enroll-course/:id" element={<EnrollCourse />}/>
+            <Route
+              path="/parents/enroll-course/:id"
+              element={<EnrollCourse />}
+            />
             <Route path="/parents/:id" element={<GetParentCourse />} />
             {/* <Route path="/tutors" element={<GetTutorCourses />} /> */}
             <Route path="/tutors" element={<Tutors />} />
@@ -54,14 +58,21 @@ const App = () => {
             <Route path="/all/courses" element={<GetAllCourses />} />
             <Route path="/users/check" element={<CheckUser />} />
             <Route path="/users/createTutor" element={<CreateUserAndTutor />} />
-            <Route path="/users/createParent" element={<CreateParentAndStudent />} />
+            <Route
+              path="/users/createParent"
+              element={<CreateParentAndStudent />}
+            />
             <Route path="/register" element={<RegistrationForm />} />
             <Route path="/register2" element={<RegistrationForm1 />} />
+            <Route path="/upload/:id" element={<Upload />} />
             <Route path="/student" element={<Student />} />
             <Route path="/parent" element={<Parent />} />
             <Route path="/tutor" element={<Tutor />} />
             <Route path="/courseinfo/:id" element={<CourseInfo />} />
-            <Route path="/parents/enroll-course/:id" element={<EnrollCourse />} />
+            <Route
+              path="/parents/enroll-course/:id"
+              element={<EnrollCourse />}
+            />
             <Route path="/messages/:id" element={<Messages />} />
             <Route path="/createroom" element={<CreateRoom />} />
           </Routes>

@@ -3,7 +3,15 @@ import axios from "axios";
 import EnrollCourse from "./EnrollCourse";
 
 let url = window.location.pathname;
-// console.log(url);
+console.log(url);
+
+const user = JSON.parse(localStorage.getItem("profile"));
+
+if (user && user?.result) {
+  url = url + "/" + user.result.email;
+} else {
+  url = url + "/" + "invalidEmail";
+}
 
 class GetParentCourse extends Component {
   constructor(props) {

@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+let url = window.location.pathname;
+const user = JSON.parse(localStorage.getItem("profile"));
+
+if (user && user?.result) {
+  url = url + "/" + user.result.email;
+} else {
+  url = url + "/" + "invalidEmail";
+}
+
 class CreateCourse extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +31,7 @@ class CreateCourse extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/tutors/create-course", this.state)
+      .post(`${url}`, this.state)
       .then((response) => {
         console.log(response);
       })

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import "./cpas.css";
 const user = JSON.parse(localStorage.getItem("profile"));
 console.log(user);
 class CreateUserAndTutor extends Component {
@@ -33,33 +33,37 @@ class CreateUserAndTutor extends Component {
     const { name, email, qualification, experience } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Name: {name}</label>
-          </div>
-          <div>
-            <label>Email: {email}</label>
-          </div>
-          <div>
-            <label>Qualification: </label>
-            <input
-              type="text"
-              name="qualification"
-              value={qualification}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-          <div>
-            <label>Experience: </label>
-            <input
-              type="text"
-              name="experience"
-              value={experience}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-          <div>
-            <button type="submit">Submit</button>
+        <form className="form" onSubmit={this.handleSubmit}>
+          <div className="form-body">
+            <div>
+              <label className="form__label">Name: {name}</label>
+            </div>
+            <div>
+              <label className="form__label">Email: {email}</label>
+            </div>
+            <div>
+              <label className="form__label">Qualification: </label>
+              <input
+                className="form__input"
+                type="text"
+                name="qualification"
+                value={qualification}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div>
+              <label className="form__label">Experience: </label>
+              <input
+                className="form__input"
+                type="text"
+                name="experience"
+                value={experience}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
           </div>
         </form>
       </div>

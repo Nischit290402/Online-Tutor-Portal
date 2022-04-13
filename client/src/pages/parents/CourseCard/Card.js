@@ -8,6 +8,15 @@ import Typography from "@mui/material/Typography";
 import { Link } from 'react-router-dom';
 import "./Box.css";
 
+let url = window.location.pathname;
+const user = JSON.parse(localStorage.getItem("profile"));
+
+if (user && user?.result) {
+  url = url + "/all/" + user.result.email;
+} else {
+  url = url + "/all/" + "invalidEmail";
+}
+
 const renderCard = (card, index) => {
   return (
     <Card xs={{ maxWidth: 345 }} key={index} className="box">
@@ -42,7 +51,7 @@ class BasicParentCard extends Component {
   }
 
   componentDidMount() {
-    axios.get("/parents").then((response) => {
+    axios.get(`${url}`).then((response) => {
       this.setState({ courses: response.data });
       console.log(response.data);
     });
