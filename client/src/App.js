@@ -4,9 +4,12 @@ import Navbarr from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Landing from "./pages/landing/landing";
 import Courses from "./pages/courses/courses";
-import Student from "./pages/homepage/student";
+import Tutors from "./pages/tutors/tutors";
+import Student from "./pages/homepage/student/studenthome";
+import Parent from "./pages/homepage/parent/parenthome";
+import Tutor from "./pages/homepage/tutor/tutorhome";
 import CourseInfo from "./pages/courseinfo/CourseInfo";
-import Tutorinfo from "./pages/tutorinfo/tutorinfo";
+import Tutorinfo from "./pages/tutorinfo/TutorInformation";
 
 import RegistrationForm from "./pages/registration/reg";
 import RegistrationForm1 from "./pages/registration/reg2";
@@ -22,12 +25,17 @@ import CheckEnroll from "./pages/parents/CheckEnroll";
 import CheckUser from "./pages/users/CheckUser";
 import CreateUserAndTutor from "./pages/users/CreateUserAndTutor";
 import CreateParentAndStudent from "./pages/users/CreateParentAndStudent";
+<<<<<<< HEAD
 
 import Upload from "./pages/upload/upload";
+=======
+import Messages from "./pages/messages/messages";
+import CreateRoom from "./pages/createroom/createroom";
+>>>>>>> Nischit290402-main
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 const App = () => {
-  const user = JSON.parse(localStorage.getItem("profile"));
 
   return (
     <>
@@ -36,15 +44,16 @@ const App = () => {
         <div className="main">
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/tutorinfo" element={<Tutorinfo />} />
+            <Route path="/tutorinformation/:id" element={<Tutorinfo />} />
             <Route path="/courses" element={<Courses />} />
-            <Route path="/courseinfo" element={<CourseInfo />} />
+            {/* <Route path="/courseinfo" element={<CourseInfo />} /> */}
             <Route path="/parents" element={<GetAllParentCourses />} />
             <Route path="/parents/check-enroll/:id" element={<CheckEnroll />} />
-            <Route path="/parents" element={<GetAllCourses />} />
+            {/* <Route path="/parents" element={<GetAllCourses />} /> */}
             <Route path="/parents/enroll-course/:id" element={<EnrollCourse />}/>
             <Route path="/parents/:id" element={<GetParentCourse />} />
-            <Route path="/tutors" element={<GetTutorCourses />} />
+            {/* <Route path="/tutors" element={<GetTutorCourses />} /> */}
+            <Route path="/tutors" element={<Tutors />} />
             <Route path="/tutors/create-course" element={<CreateCourse />} />
             <Route path="/tutors/:id" element={<GetTutorCourse />} />
             <Route path="/all/courses" element={<GetAllCourses />} />
@@ -55,8 +64,12 @@ const App = () => {
             <Route path="/register2" element={<RegistrationForm1 />} />
             <Route path="/upload/:id" element={<Upload />} />
             <Route path="/student" element={<Student />} />
+            <Route path="/parent" element={<Parent />} />
+            <Route path="/tutor" element={<Tutor />} />
             <Route path="/courseinfo/:id" element={<CourseInfo />} />
             <Route path="/parents/enroll-course/:id" element={<EnrollCourse />} />
+            <Route path="/messages/:id" element={<Messages />} />
+            <Route path="/createroom" element={<CreateRoom />} />
           </Routes>
         </div>
         <Footer />

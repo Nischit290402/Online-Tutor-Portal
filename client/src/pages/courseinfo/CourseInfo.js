@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useState }from "react";
 import Container  from 'react-bootstrap/Container';
 import { useLocation } from 'react-router-dom'
 import "./styles.css"
 import { Grid, Paper } from "@mui/material";
 import CourseCard from "../../components/CourseCard/CourseCard";
+import EnrollCourse from "../../components/EnrollCourse";
+import CheckEnroll from "../parents/CheckEnroll";
+import axios from "axios";
 
+let url = window.location.pathname;
+// url = "/courses"+url.substring(0, u)
+console.log(url);
 const CourseInfo=()=>{
     const location = useLocation()
+    const {id} = location.state;
     const {desc} = location.state
     const {course} = location.state
     const {title} = location.state
-    const {img} = location.state
-
+    const {image} = location.state
+    const [data,setData] = useState();
+    const sendID = () => {
+      setData(id);
+    }
     const myStyle = {
         backgroundImage: "linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url()",
         backgroundRepeat: 'no-repeat',
@@ -24,11 +34,23 @@ const CourseInfo=()=>{
         // fontSize: 67,
         //position:'absolute',
     };
+    console.log({id});
+    let isEnrolled="";
+    axios.get('/students/'+id).then((response)=>{isEnrolled=response.data;console.log(typeof isEnrolled);console.log(isEnrolled)}).catch((err)=> console.log(err));
+    // let condition = 
+  
     return(
         <>
+        <header className="site-head">
+            <div className="cont">
+            <div className="site-banner">
+            <h1 className="site-banner-title">Course Information</h1>
+            {/* <p className="site-banner-desc">Explore renowned tutors</p> */}
+        </div>
+            </div>
+        </header><br/><br/>
         <Container>
-        <h1> Course Information</h1>
-        <h1>==========</h1>
+        
         <Paper variant="outlined">
         <Container>
         
@@ -39,14 +61,16 @@ const CourseInfo=()=>{
             <hr className="style"/>
             <div className="row">
               <div className="col-md-4">
-                <p><img src={img} className="img-responsive" width="300" height="180" alt={course}/></p>
+                <p><img src={image} className="img-responsive" width="300" height="180" alt={course}/></p>
               </div>
               <div className="col-md-8">
 
                 <h4>{course}</h4>
               <p>{desc}</p>
                 <br/><br/><br/><br/>
-                <p><button ><b>Enroll Now »</b></button></p>
+                {/* <p><a href={url}><button ><b>Enroll Now »</b></button></a></p> */}
+                <a onClick={()=>sendID()}><EnrollCourse sendID={data}/></a>
+                <br/>
 
               </div>
             </div>

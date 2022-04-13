@@ -16,10 +16,21 @@ const CourseSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
-  index: Number,
-  title: String,
-  image: String,
+  title:{
+    type: String,
+    trim: true,
+    required: true,
+  },
+  image: {
+    type: String,
+    trim: true,
+    required: true,
+  },
   driveURL: String,
+  gmeet: {
+    type: String,
+    trim: true,
+  }
 });
 
 module.exports = mongoose.model("Course", CourseSchema);

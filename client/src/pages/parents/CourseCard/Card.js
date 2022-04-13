@@ -5,6 +5,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Link } from 'react-router-dom';
 import "./Box.css";
 
 let url = window.location.pathname;
@@ -29,9 +30,12 @@ const renderCard = (card, index) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <a href={card.more_url}>
+        {/* <a href={card.more_url}>
           <Button size="small">Learn More</Button>
-        </a>
+        </a> */}
+        <Button size="small">
+            <Link to={card.more_url}  >Learn More</Link>
+        </Button>
       </CardActions>
     </Card>
   );
@@ -62,7 +66,7 @@ class BasicParentCard extends Component {
         "https://www.computerhope.com/jargon/s/software-engineering.jpg";
       x.title = courses[i].name;
       x.text = courses[i].description;
-      x.more_url = "parents/" + courses[i]._id;
+      x.more_url = courses[i]._id;
       CardInfo.push(x);
     }
     return (

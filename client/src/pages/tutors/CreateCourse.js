@@ -17,6 +17,9 @@ class CreateCourse extends Component {
     this.state = {
       name: "",
       description: "",
+      title: "",
+      image: "",
+      gmeet: "",
     };
   }
 
@@ -35,7 +38,7 @@ class CreateCourse extends Component {
       .catch((err) => console.log(err));
   };
   render() {
-    const { name, description } = this.state;
+    const { name, description, title, image, gmeet} = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -54,6 +57,33 @@ class CreateCourse extends Component {
               type="text"
               name="description"
               value={description}
+              onChange={this.handleChange}
+            ></input>
+          </div>
+          <div>
+            <label>Course Code: </label>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={this.handleChange}
+            ></input>
+          </div>
+          <div>
+            <label>Image URL: </label>
+            <input
+              type="text"
+              name="image"
+              value={image}
+              onChange={this.handleChange}
+            ></input>
+          </div>
+          <div>
+            <label>Google Meet Link: </label>
+            <input
+              type="text"
+              name="gmeet"
+              value={gmeet}
               onChange={this.handleChange}
             ></input>
           </div>

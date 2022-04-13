@@ -27,6 +27,7 @@ class EnrollCourse extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log(url);
     axios
       .post(`${url}`, this.state)
       .then((response) => {
@@ -36,6 +37,7 @@ class EnrollCourse extends Component {
   };
   render() {
     return (
+      <>
       <div>
         <form onSubmit={this.handleSubmit}>
           <div>
@@ -45,6 +47,7 @@ class EnrollCourse extends Component {
           </div>
         </form>
       </div>
+      </>
     );
   }
 }

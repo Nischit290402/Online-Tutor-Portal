@@ -3,7 +3,7 @@ import axios from "axios";
 import "./cpas.css";
 
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(user);
+//console.log(user);
 class CreateParentAndStudent extends Component {
   constructor(props) {
     super(props);
