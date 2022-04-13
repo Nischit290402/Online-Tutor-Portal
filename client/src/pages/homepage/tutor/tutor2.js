@@ -27,6 +27,7 @@ const Courselist=()=>{
           <Grid item xs={12}>
             <Grid container justifyContent="center" spacing={spacing}>
                 <Grid item>
+                  <Grid item>
                   <Paper
                     sx={{
                       height: 140,
@@ -36,11 +37,27 @@ const Courselist=()=>{
                     }}
                   >
                   <Container><h4>Click To Create Course</h4>
-                    <hr/>
-                    
-        <Button href="/tutors/create-course" style={{backgroundColor:'green', color:"white", }}>LINK</Button>
+                    <hr/>  
+                  <Button href="/tutors/create-course" style={{backgroundColor:'green', color:"white", }}>CREATE</Button>
                   </Container>
                   </Paper>
+                  </Grid>
+                  <br/>
+                  <Grid item>
+                  <Paper
+                    sx={{
+                      height: 140,
+                      width: 200,
+                      backgroundColor: (theme) =>
+                        theme.palette.mode === 'dark' ? '#1A2027' : '#e63946',
+                    }}
+                  >
+                  <Container><h4>Click To Upload to Drive</h4>
+                    <hr/>  
+                  <Button href="#" style={{backgroundColor:'green', color:"white", }}>UPLOAD</Button>
+                  </Container>
+                  </Paper>
+                </Grid>
                 </Grid>
               <Grid item>
               <Grid item>
