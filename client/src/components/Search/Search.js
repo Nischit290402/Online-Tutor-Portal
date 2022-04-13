@@ -136,7 +136,7 @@ const SearchBar=()=> {
             selectOnFocus
             options={SearchInfo}
             getOptionLabel={(option) => option.course}
-            //groupBy={(option) => option.title.substring(0,2)}
+            groupBy={(option) => option.title.substring(0,2)}
             loading={loading}
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Course" InputProps={{...params.InputProps,endAdornment: (
