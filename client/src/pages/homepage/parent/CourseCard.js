@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 
 // import CourseInfo from "../../pages/courseinfo/CourseInfo";
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(user.result.email);
 
 
 const breakPoints = [
@@ -85,7 +84,6 @@ class CourseCard extends Component {
           }
       
     }
-    console.log(CardInfo);
     return (
         <>
         <div className="grid">
