@@ -14,7 +14,7 @@ const checkRoutes = require("./routes/check");
 const uploadRoutes = require("./routes/upload");
 // const searchRoutes = require("./routes/search");
 const connectDB = require("./db/connect");
-require("dotenv").config();
+require('dotenv').config()
 
 const Tutor = require("./models/tutors");
 const { log } = require("async");
@@ -57,12 +57,13 @@ app.use("/students", studentRoutes);
 app.use("/check", checkRoutes);
 app.use("/users", userRoutes);
 app.use("/all", allRoutes);
-// app.use("/search", searchRoutes);
+
 port = process.env.port || 5000;
+
 const start = async () => {
   try {
     await connectDB(process.env.CONNECTION_STRING);
-    app.listen(5000, () => {
+    app.listen(process.env.PORT, () => {
       console.log("Server is listening on port 5000....");
     });
   } catch (error) {
