@@ -10,6 +10,7 @@ const Parent = require("../models/parents");
 const Enrolled = require("../models/enrolled");
 
 const { sharefolder_read } = require("./drive");
+const { log } = require("async");
 
 //This contains functions of all routes accessed by the parents, which
 //includes getting all courses available, and enrolling/unenrolling their child from a course.
@@ -54,13 +55,19 @@ const enrollCourse = async (req, res) => {
     login_info.name = get_parent.name;
     login_info.child_email = get_parent.student_email;
 
-    const find_course = await Course.find({ _id: courseID });
+    const find_course = await Course.findOne({ _id: courseID });
 
     console.log(find_course);
     if (find_course.length == 0) {
       res.send(`Course with id: ${courseID} not found`); // 500 status
     }
-    // sharefolder_read(find_course.driveURL, login_info.child_email); ///
+    // console.log(
+    //   find_course,
+    //   find_course.driveURL,
+    //   find_course.name,
+    //   login_info.child_email
+    // );
+    sharefolder_read(find_course.driveURL, login_info.child_email); ///
     const enroll_data = {
       course_ID: courseID,
       student_email: login_info.child_email,

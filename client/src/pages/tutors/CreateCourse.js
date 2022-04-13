@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import "./cc.css";
 let url = window.location.pathname;
 const user = JSON.parse(localStorage.getItem("profile"));
 
@@ -38,57 +38,64 @@ class CreateCourse extends Component {
       .catch((err) => console.log(err));
   };
   render() {
-    const { name, description, title, image, gmeet} = this.state;
+    const { name, description, title, image, gmeet } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Course Name: </label>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-          <div>
-            <label>Course Description: </label>
-            <input
-              type="text"
-              name="description"
-              value={description}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-          <div>
-            <label>Course Code: </label>
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-          <div>
-            <label>Image URL: </label>
-            <input
-              type="text"
-              name="image"
-              value={image}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-          <div>
-            <label>Google Meet Link: </label>
-            <input
-              type="text"
-              name="gmeet"
-              value={gmeet}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-          <div>
-            <button type="submit">Submit</button>
+        <form className="form" onSubmit={this.handleSubmit}>
+          <div className="form-body">
+            <div>
+              <label className="form__label">Course Name: </label>
+              <input
+                className="form__input"
+                type="text"
+                name="name"
+                value={name}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div>
+              <label className="form__label">Course Description: </label>
+              <input
+                className="form__input"
+                type="text"
+                name="description"
+                value={description}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div>
+              <label className="form__label">Course Code: </label>
+              <input
+                className="form__input"
+                type="text"
+                name="title"
+                value={title}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div>
+              <label className="form__label">Image URL: </label>
+              <input
+                className="form__input"
+                type="text"
+                name="image"
+                value={image}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div>
+              <label className="form__label">Google Meet Link: </label>
+              <input
+                className="form__input"
+                type="text"
+                name="gmeet"
+                value={gmeet}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
           </div>
         </form>
       </div>
