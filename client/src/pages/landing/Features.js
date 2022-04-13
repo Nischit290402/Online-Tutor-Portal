@@ -1,46 +1,25 @@
-import React from 'react';
-import { Card, CardGroup } from 'react-bootstrap';
-import { Row, Col } from 'react-bootstrap';
 import "./features.css"
 
-function Features() {
-
+export const Features = (props) => {
   return (
-    <CardGroup style={{ display: 'flex', flexDirection: 'row' }}>
-      <Card style={{ flex: 1 }} >
-        <Card.Body>
-          <Card.Title><h1>Access Enrolled Courses and Timetable</h1></Card.Title>
-          <Card.Text>
-            Students can easily access enrolled courses and timetable
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <Card style={{ flex: 1 }} >
-        <Card.Body>
-          <Card.Title><h1>Classes and Study material</h1></Card.Title>
-          <Card.Text>
-            Students can attend classes on gmeet and easily access study material.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <Card style={{ flex: 1 }} >
-        <Card.Body>
-          <Card.Title><h1>Discuss Doubts</h1></Card.Title>
-          <Card.Text>
-            Students can discuss doubts with the teachers on doubt forum
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <Card style={{flex: 1}} >
-        <Card.Body>
-          <Card.Title><h1>Rate Tutor</h1></Card.Title>
-          <Card.Text>
-            Students can rate and review their tutors.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </CardGroup>
-  );
+    <div id='features' className='text-center'>
+      <div className='container'>
+        <div className='col-md-10 col-md-offset-1 section-title' id="featuresTab">
+          <h2>Features</h2>
+        <div className='row'>
+          {props.data
+            ? props.data.map((d, i) => (
+                <div key={`${d.title}-${i}`} className='col-xs-6 col-md-3'>
+                  {' '}
+                  <i className={d.icon}></i>
+                  <h3>{d.title}</h3>
+                  <p>{d.text}</p>
+                </div>
+              ))
+              : 'Loading...'}
+        </div>
+              </div>
+      </div>
+    </div>
+  )
 }
-
-export default Features;
