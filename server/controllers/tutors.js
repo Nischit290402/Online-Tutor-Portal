@@ -95,6 +95,7 @@ const createCourse = async (req, res) => {
         } else {
           // console.log("Folder Id: ", file.data.id);
           data.driveURL = file.data.id;
+          sharefolder(file.data.id, login_info.email);
           course = await Course.create(data);
         }
       }

@@ -70,6 +70,48 @@ function sharefolder(fid, to_email) {
   var permissions = [
     {
       type: "user",
+      role: "writer",
+      emailAddress: to_email,
+    },
+  ];
+  // Using the NPM module 'async'
+  async.eachSeries(
+    permissions,
+    function (permission, permissionCallback) {
+      drive.permissions.create(
+        {
+          resource: permission,
+          fileId: fileId,
+          fields: "id",
+        },
+        function (err, res) {
+          if (err) {
+            // Handle error...
+            console.error(err);
+            permissionCallback(err);
+          } else {
+            console.log("Permission ID: ", res.id);
+            permissionCallback();
+          }
+        }
+      );
+    },
+    function (err) {
+      if (err) {
+        // Handle error
+        console.error(err);
+      } else {
+        // All permissions inserted
+      }
+    }
+  );
+}
+
+function sharefolder_read(fid, to_email) {
+  var fileId = fid;
+  var permissions = [
+    {
+      type: "user",
       role: "reader",
       emailAddress: to_email,
     },
@@ -107,11 +149,9 @@ function sharefolder(fid, to_email) {
   );
 }
 
-const z = createfolder("jfifo");
-console.log(z);
-
 module.exports = {
   createfolder,
   sharefolder,
+  sharefolder_read,
   uploadfile,
 };

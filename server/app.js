@@ -15,13 +15,13 @@ const uploadRoutes = require("./routes/upload");
 // const searchRoutes = require("./routes/search");
 const subjectRoutes = require("./routes/subject");
 const connectDB = require("./db/connect");
-const WebSockets=require("./Websockets");
-const userRouter =require( "./routes/user");
-const chatRoomRouter =require( "./routes/chatroom.js");
-const http=require("http");
-const cors=require('cors');
+const WebSockets = require("./Websockets");
+const userRouter = require("./routes/user");
+const chatRoomRouter = require("./routes/chatroom.js");
+const http = require("http");
+
 app.use(cors());
-require('dotenv').config()
+require("dotenv").config();
 
 const Tutor = require("./models/tutors");
 const { log } = require("async");
@@ -64,7 +64,7 @@ app.use("/students", studentRoutes);
 app.use("/check", checkRoutes);
 app.use("/users", userRoutes);
 app.use("/user", userRouter);
-app.use("/room",  chatRoomRouter);
+app.use("/room", chatRoomRouter);
 app.use("/all", allRoutes);
 app.use("/subject", subjectRoutes);
 // process.env.CONNECTION_STRING
@@ -86,13 +86,12 @@ start();
 const utc = new Date().toJSON().slice(0, 10);
 console.log(utc);
 
-
 /** Create HTTP server. */
 const server = http.createServer(app);
-const socketio=require("socket.io")(server,{
-  cors:{
-    origin:'*',
-  }
+const socketio = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+  },
 });
 let users = [];
 
@@ -128,9 +127,10 @@ global.io.on("connection", (socket) => {
   });
 
   //send and get message
-  socket.on("sendMessage", (userId,text) => {
+  socket.on("sendMessage", (userId, text) => {
     global.io.emit("getMessage", {
-      userId,text,
+      userId,
+      text,
     });
   });
 
@@ -145,5 +145,5 @@ global.io.on("connection", (socket) => {
 server.listen(5000);
 /** Event listener for HTTP server "listening" event. */
 server.on("listening", () => {
-  console.log(`Listening on port:: http://localhost:5000/`)
+  console.log(`Listening on port:: http://localhost:5000/`);
 });
