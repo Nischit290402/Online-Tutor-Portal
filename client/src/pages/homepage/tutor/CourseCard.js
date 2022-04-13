@@ -11,7 +11,8 @@ import "./Card.css";
 import { Link } from 'react-router-dom';
 
 // import CourseInfo from "../../pages/courseinfo/CourseInfo";
-
+const user = JSON.parse(localStorage.getItem("profile"));
+// console.log(user.result.email);
 const breakPoints = [
   {width:296,itemsToShow:1,itemsToScroll:1},
   {width:600,itemsToShow:2,itemsToScroll:2},
@@ -33,13 +34,15 @@ const renderCard = (CardInfo) => {
         <Typography variant="body2" color="text.secondary">
           {CardInfo.course}
         </Typography>
+        <hr/>
+        <Button href={CardInfo.gmeet} style={{backgroundColor:'black', color:"white", }}>LINK</Button>
       </CardContent>
       <CardActions>
-        <Button 
+        {/* <Button 
           size="small" 
           >
             <Link to={'/courseinfo/'+ CardInfo._id} state={{id: CardInfo._id, desc: CardInfo.desc, course: CardInfo.course, title: CardInfo.title, image: CardInfo.image}} >Learn More</Link>
-        </Button>
+        </Button> */}
         
       </CardActions>
     </Card>
@@ -52,6 +55,7 @@ class CourseCard extends Component {
 
     this.state = {
       courses: [],
+      encourses: []
     };
   }
 
@@ -60,23 +64,28 @@ class CourseCard extends Component {
     .get("/parents")
     .then((response) => {
       this.setState({ courses: response.data });
-      //console.log(response.data);
+      // console.log(response.data);
     });
   }
 
   render() {
     const { courses: courses } = this.state;
+    console.log(courses);
     var CardInfo = [];
     for (let i = 0; i < courses.length; i++) {
-      let x = {};
-      x._id = courses[i]._id;
-      x.image = courses[i].image;
-      x.title = courses[i].title;
-      x.course = courses[i].name;
-      x.desc = courses[i].description;
-      x.more_url = "courses/" + courses[i]._id;
-      CardInfo.push(x);
+        let x = {};
+          if(courses[i].tutor_email===user.result.email){
+            x._id = courses[i]._id;
+            x.image = courses[i].image;
+            x.title = courses[i].title;
+            x.course = courses[i].name;
+            x.desc = courses[i].description;
+            x.gmeet = courses[i].gmeet;
+            CardInfo.push(x);
+          }
+      
     }
+    console.log(CardInfo);
     return (
         <>
         <div className="grid">

@@ -5,6 +5,7 @@ const login_info = {
 const User = require("../models/users");
 const Parent = require("../models/parents");
 const Student = require("../models/students");
+const Tutor = require("../models/tutors");
 
 const CreateUserAndTutor = async (req, res) => {
   try {

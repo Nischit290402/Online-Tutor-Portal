@@ -9,6 +9,18 @@ const getSubjects = async (req, res) => {
       res.status(500).json(err);
     }
   };
+
+  const getSubject = async (req, res) => {
+    try {
+      const { id: courseID } = req.params;
+      const course = await subject.findOne({ _id: courseID });
+      res.status(200).json(course); // this returns an array. Use {all_courses} to return class/object
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
+
   module.exports = {
-    getSubjects
+    getSubjects,
+    getSubject
   };
