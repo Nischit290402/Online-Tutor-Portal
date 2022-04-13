@@ -1,0 +1,68 @@
+{
+    "About": {
+      "paragraph": "We are a group of Individuals who strive to provide the best Education, alongwith a Friendly User-Expereince and Ease of Accessibility.",
+      "Why": [
+        "Highly Qualified Tutors",
+        "Experienced Community to help"
+      ],
+      "Why2": [
+        "Discuss and clarify doubts 24/7 by tutors",
+        "Learn with new courses everyday!"
+      ]
+    },
+    "Testimonials": [
+      {
+        "img": "img/testimonials/01.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "John Doe"
+      },
+      {
+        "img": "img/testimonials/02.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "Johnathan Doe"
+      },
+      {
+        "img": "img/testimonials/03.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "John Doe"
+      },
+      {
+        "img": "img/testimonials/04.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "Johnathan Doe"
+      },
+      {
+        "img": "img/testimonials/05.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "John Doe"
+      },
+      {
+        "img": "img/testimonials/06.jpg",
+        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+        "name": "Johnathan Doe"
+      }
+    ],
+    "Features": [
+      {
+        "icon": "fa fa-comments-o",
+        "title": "Discuss Doubts and chat",
+        "text": "Now Discuss and Chat with a fully integrated chat app. Create Groups to ask doubts and ask Questions to tutors directly!"
+      },
+      {
+        "icon": "fa fa-bullhorn",
+        "title": "The Best Courses and Tutors",
+        "text": "Parents can look for courses by the best tutors, and register their children into the course."
+      },
+      {
+        "icon": "fa fa-group",
+        "title": "Community Driven Portal",
+        "text": "The best community to help your children Learn and grow."
+      },
+      {
+        "icon": "fa fa-magic",
+        "title": "Attend and watch Classes",
+        "text": "Access all the course material and attend classes to complete the course."
+      }
+    ]
+  }
+  

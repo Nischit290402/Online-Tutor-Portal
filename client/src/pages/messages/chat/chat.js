@@ -95,7 +95,7 @@ const Chat = () => {
 	// };
 
 	useEffect(()=>{
-		socket.emit("addUser",userId);
+		socket.emit("addUser",userEmail);
 	},[userEmail]);
 
 	const submitNewMessage = async () => {
@@ -106,16 +106,16 @@ const Chat = () => {
 			// console.log(res);
 		})
 		.catch(error=>console.error(error))
-		socket.emit("sendMessage", { userId,newMessage });
+		socket.emit("sendMessage", { userEmail,newMessage });
 		setNewMessage("");
 		// scrollToLastMsg();
 	};
 
 	useEffect(()=>{
 		socket.on("getMessage", (data) => {
-			let f=true;
-			if(data.userId.userId===userId){
-				f=false;
+			let f=false;
+			if(data.userId.userEmail===userEmail){
+				f=true;
 			}
 			setArrivalMessage({
 				user:f,

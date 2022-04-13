@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 // import useStyles from './styles';
 import Icon from "./icon";
 import { AUTH } from "../../constants/actionTypes";
+import axios from "axios";
 const user = JSON.parse(localStorage.getItem("profile"));
 
 const Auth = () => {
@@ -18,10 +19,29 @@ const Auth = () => {
     const token = res?.tokenId;
     console.log(res);
     try {
-      dispatch({ type: AUTH, data: { result, token } });
-      console.log(user);
+      await dispatch({ type: AUTH, data: { result, token } });
+      console.log(result);
+      await axios.get(`http://localhost:5000/users/check/${result.email}`)
+      .then((response) => {
+        console.log(response);
+        if(response.data?.role){
+          if (response.data.role === "student") {
+            navigation('/students')
+          } else if (response.data.role === "parent") {
+            navigation('/parent')
+          } else if (response.data.role === "tutor") {
+            navigation('/tutors')
+          } else {
+            navigation('/');
+          }
+        }
+        else{
+          navigation('/users/check');
+        }
+      })
+      .catch((err) => console.log(err));
       // setUser(result)
-      navigation("/users/check");
+      // navigation("/users/check");
     } catch (error) {
       console.log(error);
     }
