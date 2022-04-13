@@ -8,7 +8,6 @@ import "./styles.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as actionType from "../../constants/actionTypes";
-// import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
 import pic from "./../../images/profile.jpg";
 import SearchBar from "../Search/Search";
@@ -84,7 +83,7 @@ const Navbarr = () => {
                   <Dropdown.Menu variant="dark">
                     <Dropdown.Item href="/tutors">Explore Tutors</Dropdown.Item>
                     <Dropdown.Item href="/courses">My Courses</Dropdown.Item>
-                    <Dropdown.Item href="/messages">Messages</Dropdown.Item>
+                    <Dropdown.Item href="/messages/0">Messages</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item href="#" onClick={logout}>
                       Logout
