@@ -19,8 +19,8 @@ class GetTutorCourse extends Component {
     };
   }
 
-  componentDidMount() {
-    axios
+  async componentDidMount() {
+    await axios
       .get(`${url}`)
       .then((response) => {
         this.setState({ course: response.data });

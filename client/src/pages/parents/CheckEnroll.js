@@ -14,8 +14,8 @@ class CheckEnroll extends Component {
     };
   }
 
-  componentDidMount() {
-    axios
+  async componentDidMount() {
+    await axios
       .get(`${cid}`)
       .then((response) => {
         this.setState({ isEnrolled: response.data });

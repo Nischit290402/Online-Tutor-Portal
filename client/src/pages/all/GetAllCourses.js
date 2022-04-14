@@ -13,8 +13,8 @@ class GetAllCourses extends Component {
     };
   }
 
-  componentDidMount() {
-    axios.get("/all/courses").then((response) => {
+  async componentDidMount() {
+    await axios.get("/all/courses").then((response) => {
       this.setState({ courses: response.data });
       console.log(response.data);
     });

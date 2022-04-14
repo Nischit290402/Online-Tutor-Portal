@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./cpas.css";
-
+import Button from "react-bootstrap/Button";
 const user = JSON.parse(localStorage.getItem("profile"));
 //console.log(user);
 class CreateParentAndStudent extends Component {
@@ -16,24 +16,25 @@ class CreateParentAndStudent extends Component {
       year_of_study: "",
     };
   }
-
+  
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
-  handleSubmit = (e) => {
+  handleSubmit = async(e) => {
     e.preventDefault();
-    axios
-      .post("/users/createParent", this.state)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+    await axios
+    .post("/users/createParent", this.state)
+    .then((response) => {
+      console.log(response);
+      alert("Successfully Created User")
+    })
+    .catch((err) => {console.log(err);alert("Failed to create user")});
   };
   render() {
     const { name, email, student_email, student_name, year_of_study } =
-      this.state;
+    this.state;
     return (
       <div>
         <form className="form" onSubmit={this.handleSubmit}>
@@ -75,7 +76,7 @@ class CreateParentAndStudent extends Component {
               ></input>
             </div>
             <div>
-              <button type="submit">Submit</button>
+            <Button type="submit" variant="primary">Submit</Button>
             </div>
           </div>
         </form>

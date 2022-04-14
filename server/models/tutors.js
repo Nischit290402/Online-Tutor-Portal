@@ -26,6 +26,10 @@ const TutorSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
+  imageURL: {
+    type: String,
+    trim: true,
+  },
 });
 
 module.exports = mongoose.model("Tutor", TutorSchema);

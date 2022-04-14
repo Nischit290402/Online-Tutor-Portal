@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
 
 let url = window.location.pathname;
 url = "/parents"
@@ -22,9 +23,9 @@ class EnrollCourse extends Component {
       [e.target.name]: "enrolled",
     });
   };
-  handleSubmit = (e) => {
+  handleSubmit = async(e) => {
     e.preventDefault();
-    axios
+    await axios
       .post(`${url}/`+this.props.sendID+"/"+z, this.state)
       .then((response) => {
         console.log(response);
@@ -34,16 +35,13 @@ class EnrollCourse extends Component {
     
   };
 
-//   axios.get("/check-enroll/"+this.props.sendID)
   render() {
     return (
       <>
       <div>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <button onChange={this.handleChange} type="submit">
-              Enroll
-            </button>
+            <Button onChange={this.handleChange} type="submit" variant="primary">Enroll</Button>
           </div>
         </form>
       </div>

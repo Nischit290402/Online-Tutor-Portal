@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./cpas.css";
+import Button from "react-bootstrap/Button";
 const user = JSON.parse(localStorage.getItem("profile"));
+console.log(user);
 class CreateUserAndTutor extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: user.result.name,
       email: user.result.email,
+      imageURL: user.result.imageUrl,
       role: "tutor",
       qualification: "",
-      experience: "",
+      experience: ""
     };
   }
 
@@ -19,17 +22,18 @@ class CreateUserAndTutor extends Component {
       [e.target.name]: e.target.value,
     });
   };
-  handleSubmit = (e) => {
+  handleSubmit = async(e) => {
     e.preventDefault();
-    axios
-      .post("/users/createTutor", this.state)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+    await axios
+    .post("/users/createTutor", this.state)
+    .then((response) => {
+      console.log(response);
+      alert("Successfully Created Tutor");
+    })
+    .catch((err) => {console.log(err);alert("Failed to create user")});
   };
   render() {
-    const { name, email, qualification, experience } = this.state;
+    const { name, email, qualification, experience, imageURL } = this.state;
     return (
       <div>
         <form className="form" onSubmit={this.handleSubmit}>
@@ -61,7 +65,7 @@ class CreateUserAndTutor extends Component {
               ></input>
             </div>
             <div>
-              <button type="submit">Submit</button>
+              <Button type="submit" variant="primary">Submit</Button> 
             </div>
           </div>
         </form>

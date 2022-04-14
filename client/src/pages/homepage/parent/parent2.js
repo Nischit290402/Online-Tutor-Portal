@@ -4,14 +4,13 @@ import Container  from 'react-bootstrap/Container';
 import CourseCard1 from "./CourseCard";
 import CourseCard from "../../../components/CourseCard/CourseCard";
 import "./styles.css"
-import axios from "axios";
 const user = JSON.parse(localStorage.getItem("profile"));
 
 const myStyle = {
     // backgroundImage: "linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url()",
     backgroundRepeat: 'no-repeat',
     width:'97.2%',
-    height: '450px',
+    height: '430px',
     color: 'white',
     // display: 'flex',
     // alignItems: 'center',
@@ -34,7 +33,7 @@ const Courselist=()=>{
               <Grid item>
                 <Paper
                   sx={{
-                    height: 510,
+                    height: 520,
                     width: 1116,
                     backgroundColor: (theme) =>
                       theme.palette.mode === 'dark' ? '#1A2027' : '#457b9d',
@@ -56,7 +55,7 @@ const Courselist=()=>{
               <Grid item>
               <Paper
                 sx={{
-                  height: 500,
+                  height: 560,
                   width: 1116,
                   backgroundColor: (theme) =>
                     theme.palette.mode === 'dark' ? '#1A2027' : '#457b9d',

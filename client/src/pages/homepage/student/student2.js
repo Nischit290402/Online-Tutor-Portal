@@ -10,7 +10,7 @@ const myStyle = {
     // backgroundImage: "linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url()",
     backgroundRepeat: 'no-repeat',
     width:'97.2%',
-    height: '450px',
+    height: '470px',
     color: 'white',
     // display: 'flex',
     // alignItems: 'center',
@@ -53,7 +53,7 @@ const Courselist=()=>{
               <Grid item>
               <Paper
                 sx={{
-                  height: 500,
+                  height: 560,
                   width: 1116,
                   backgroundColor: (theme) =>
                     theme.palette.mode === 'dark' ? '#1A2027' : '#457b9d',

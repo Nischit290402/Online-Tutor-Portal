@@ -11,6 +11,7 @@ const CourseInfo=()=>{
     const {exp} = location.state
     const {name} = location.state
     const {email} = location.state
+    const {image} = location.state
 
     const myStyle = {
         backgroundImage: "linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url()",
@@ -45,15 +46,14 @@ const CourseInfo=()=>{
             <hr className="style"/>
             <div className="row">
               <div className="col-md-4">
-                <p><img src="#" className="img-responsive" width="300" height="180" alt={name}/></p>
+                <p><img src={image} className="img-responsive" width="300" height="180" alt={name}/></p>
               </div>
               <div className="col-md-8">
 
                 <h4 id="title">{email}</h4>
                 
                 <p>{qual}</p>
-              <br/><br/><br/><br/>
-                <p><button ><b>Enroll Now »</b></button></p>
+              <br/><br/>
 
               </div>
             </div>
