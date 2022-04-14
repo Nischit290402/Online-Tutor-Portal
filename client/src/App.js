@@ -43,7 +43,7 @@ const App = () => {
             <Route path="/tutorinformation/:id" element={<Tutorinfo />} />
             <Route path="/courses" element={<Courses />} />
             {/* <Route path="/courseinfo" element={<CourseInfo />} /> */}
-            <Route path="/parents" element={<GetAllParentCourses />} />
+            {/* <Route path="/parents" element={<GetAllParentCourses />} /> */}
             <Route path="/parents/check-enroll/:id" element={<CheckEnroll />} />
             {/* <Route path="/parents" element={<GetAllCourses />} /> */}
             <Route

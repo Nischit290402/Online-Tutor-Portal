@@ -28,7 +28,7 @@ const getAllEnrolledCourses = async (req, res) => {
       let one_course = await Course.findOne({_id: all_enrolled[i].course_ID})
       all_courses.push(one_course);
     }
-    console.log(all_courses);
+    // console.log(all_courses);
     res.status(200).json(all_courses); // this returns an array. Use {all_courses} to return class/object
   } catch (err) {
     res.status(500).json(err);

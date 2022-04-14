@@ -17,21 +17,21 @@ class CreateRoom extends Component {
       [e.target.name]: e.target.value,
     });
   };
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const l=[];
-			axios.get(`http://localhost:5000/users/${this.state.currentuser_id}`)
+			await axios.get(`http://localhost:5000/users/${this.state.currentuser_id}`)
 			.then((res)=>{
 				l.push(res.data._id);
 			})
 			.catch(error=>console.error(error));
-      axios.get(`http://localhost:5000/users/${this.state.user_id}`)
+      await axios.get(`http://localhost:5000/users/${this.state.user_id}`)
 			.then((res)=>{
 				l.push(res.data._id);
 			})
 			.catch(error=>console.error(error));
     const req={name:this.state.room_name,userIds:l,type:"consumer-to-support"};
-    axios.post(`http://localhost:5000/room/initiate`, req)
+    await axios.post(`http://localhost:5000/room/initiate`, req)
       .then((response) => {
         console.log(response);
       })
@@ -55,7 +55,7 @@ class CreateRoom extends Component {
               ></input>
             </div>
             <div>
-              <label className="form__label">User id: </label>
+              <label className="form__label">Your Friend's/Tutor's Email: </label>
               <input
                 className="form__input"
                 type="text"
@@ -65,7 +65,7 @@ class CreateRoom extends Component {
               ></input>
             </div>
             <div>
-              <label className="form__label">Your User id: </label>
+              <label className="form__label">Your Email id: </label>
               <input
                 className="form__input"
                 type="text"

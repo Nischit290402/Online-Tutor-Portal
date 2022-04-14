@@ -17,17 +17,16 @@ const Home = () => {
 				/> */}
 			</div>
 
-			<h1 className="home__title"> Keep your phone connected </h1>
+			<h1 className="home__title"> Keep connected to internet </h1>
 			<p className="home__text">
-				WhatsApp connects to your phone to sync messages. To reduce data usage,
-				connect your phone to Wi-Fi.
+				The Chat runs on NodeJS and using React.
 			</p>
 			<p className="home__text">
 				{/* <Icon id="laptop" className="home__icon" /> */}
 				<span>
-					WhatsApp is available for Mac.{" "}
+					Chat API was implemented using this repository.{" "}
 					<a
-						href="https://www.whatsapp.com/download"
+						href="https://github.com/adeelibr/node-playground/tree/master/chapter-1-chat"
 						target="_blank"
 						className="home__link"
 					>
