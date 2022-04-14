@@ -130,29 +130,31 @@ const checkEnroll = async (req, res) => {
   }
 };
 
+//Get all courses in which the student is enrolled
 const getAllEnrolledCourses = async (req, res) => {
-  //Get all courses
-  console.log("hi");
+  //Get Parameter(User email)
   const { uid: user_email } = req.params;
-  console.log("hi" + user_email);
+
   try {
+    //Get parent details
     const get_parent = await Parent.findOne({ email: user_email });
-    console.log(get_parent);
     if (get_parent && get_parent?.name) {
       login_info.email = user_email;
       login_info.name = get_parent.name;
       login_info.child_email = get_parent.student_email;
     }
+    //Get enrolled details
     const all_enrolled = await Enrolled.find({
       student_email: login_info.child_email,
     });
+    //Get Courses from enrolled details
     let all_courses = [];
     for (let i = 0; i < all_enrolled.length; i++) {
       let one_course = await Course.findOne({ _id: all_enrolled[i].course_ID });
       all_courses.push(one_course);
     }
     console.log(all_courses);
-    res.status(200).json(all_courses); // this returns an array. Use {all_courses} to return class/object
+    res.status(200).json(all_courses);
   } catch (err) {
     res.status(500).json(err);
   }

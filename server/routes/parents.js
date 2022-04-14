@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+// Connect Parent Routes with Parent functions
+
 const {
   getAllCourses,
   getCourse,
