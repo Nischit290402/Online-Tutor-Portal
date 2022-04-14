@@ -20,8 +20,6 @@ const myStyle = {
     //position:'absolute',
 };
 
-let SInfo = {};
-axios.get('/parents/').then((response)=>SInfo=response.data);console.log(SInfo);
 
 const Courselist=()=>{
     const [spacing, setSpacing] = React.useState(2);

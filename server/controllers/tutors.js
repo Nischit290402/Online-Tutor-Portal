@@ -29,7 +29,6 @@ const drive = google.drive({ version: "v3", auth: oAuth2Client });
 const { findOneAndUpdate } = require("../models/courses");
 const Course = require("../models/courses");
 const Tutor = require("../models/tutors");
-const Resource = require("../models/resources");
 const { file } = require("googleapis/build/src/apis/file");
 //This contains functions of all routes accessed by the tutor, which
 //includes getting all courses by that tutor, creating/updating/deleting a course of that logged in tutor.
@@ -146,44 +145,7 @@ global.f = "";
 function setF(z) {
   global.f = z;
 }
-const uploadFile = async (req, res) => {
-  var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, "temp");
-    },
-    filename: function (req, file, cb) {
-      cb(null, Date.now() + "-" + file.originalname);
-      f = file.originalname;
-    },
-  });
-  console.log(f);
-  const { id: cid } = req.params;
-  // console.log(cid);
-  const folder_id = await Course.find({ _id: cid });
-  // console.log(folder_id);
-  const file_url =
-    "https://drive.google.com/drive/folders/" + folder_id + "/" + global.f;
-  // const create_resource = await Resource.create({
-  //   course_id: cid,
-  //   folder_name: folder_id,
-  //   file_name: f,
-  //   file_url: file_url,
-  // });
-  // console.log(create_resource);
 
-  var upload = multer({ storage: storage }).single("file");
-  upload(req, res, function (err) {
-    if (err instanceof multer.MulterError) {
-      console.log("11");
-      return res.status(500).json(err);
-    } else if (err) {
-      console.log("12");
-      return res.status(500).json(err);
-    }
-
-    return res.status(200).send(req.file);
-  });
-};
 
 module.exports = {
   getAllCourses,
@@ -191,5 +153,4 @@ module.exports = {
   createCourse,
   updateCourse,
   deleteCourse,
-  uploadFile,
 };

@@ -48,7 +48,6 @@ const SearchBarT=()=> {
        axios.get("/tutors-info")
    .then((response) => {
      getdata(response.data);
-     //console.log(response.data);
    });
   }
    
@@ -56,7 +55,6 @@ const SearchBarT=()=> {
     const handleSubmit = (event) => {
       event.preventDefault();
       var tutors = data;
-      //console.log(event.target.defaultValue)
       var TutorInfo = [];
       let y = {};
       for (let i = 0; i < tutors.length; i++) {  
@@ -70,13 +68,10 @@ const SearchBarT=()=> {
           TutorInfo.push(y);
         }
       }
-      console.log(TutorInfo[0])
       navigation("/tutorinformation/"+ TutorInfo[0]._id, {state: {qual: TutorInfo[0].qual, exp: TutorInfo[0].exp, name: TutorInfo[0].name, email: TutorInfo[0].email}})
     };
     
-    //console.log(data)
     var tutors = data;
-    //console.log(typeof(subjects))
     var SearchInfo = [];
     for (let i = 0; i < tutors.length; i++) {
       let x = {};
@@ -84,7 +79,6 @@ const SearchBarT=()=> {
       x.email = tutors[i].email;
       SearchInfo.push(x);
     }
-    // console.log(SearchInfo)
     const [open, setOpen] = React.useState(false);
     const [options, setOptions] = React.useState([]);
     const loading = open && SearchInfo.length === 0;
@@ -105,7 +99,7 @@ const SearchBarT=()=> {
         await sleep(1e3); // For demo purposes.
     
         if (active) {
-          // setOptions([...SearchInfo]);
+          setOptions([...SearchInfo]);
         }
       })();
     

@@ -7,7 +7,6 @@ const {
   createCourse,
   updateCourse,
   deleteCourse,
-  uploadFile,
 } = require("../controllers/tutors");
 
 router.route("/all/:uid").get(getAllCourses);

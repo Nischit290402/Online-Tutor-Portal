@@ -10,7 +10,6 @@ import axios from "axios";
 
 let url = window.location.pathname;
 // url = "/courses"+url.substring(0, u)
-console.log(url);
 const CourseInfo=()=>{
     const location = useLocation()
     const {id} = location.state;

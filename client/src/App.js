@@ -26,7 +26,6 @@ import CheckUser from "./pages/users/CheckUser";
 import CreateUserAndTutor from "./pages/users/CreateUserAndTutor";
 import CreateParentAndStudent from "./pages/users/CreateParentAndStudent";
 
-import Upload from "./pages/upload/upload";
 import Messages from "./pages/messages/messages";
 import CreateRoom from "./pages/createroom/createroom";
 import "./App.css";
@@ -42,19 +41,15 @@ const App = () => {
             <Route path="/" element={<Landing />} />
             <Route path="/tutorinformation/:id" element={<Tutorinfo />} />
             <Route path="/courses" element={<Courses />} />
-            {/* <Route path="/courseinfo" element={<CourseInfo />} /> */}
             <Route path="/parents" element={<GetAllParentCourses />} />
             <Route path="/parents/check-enroll/:id" element={<CheckEnroll />} />
-            {/* <Route path="/parents" element={<GetAllCourses />} /> */}
             <Route
               path="/parents/enroll-course/:id"
               element={<EnrollCourse />}
             />
             <Route path="/parents/:id" element={<GetParentCourse />} />
-            {/* <Route path="/tutors" element={<GetTutorCourses />} /> */}
             <Route path="/tutors" element={<Tutors />} />
             <Route path="/tutors/create-course" element={<CreateCourse />} />
-            <Route path="/tutors/:id" element={<GetTutorCourse />} />
             <Route path="/all/courses" element={<GetAllCourses />} />
             <Route path="/users/check" element={<CheckUser />} />
             <Route path="/users/createTutor" element={<CreateUserAndTutor />} />
@@ -64,7 +59,6 @@ const App = () => {
             />
             <Route path="/register" element={<RegistrationForm />} />
             <Route path="/register2" element={<RegistrationForm1 />} />
-            <Route path="/upload/:id" element={<Upload />} />
             <Route path="/student" element={<Student />} />
             <Route path="/parent" element={<Parent />} />
             <Route path="/tutor" element={<Tutor />} />

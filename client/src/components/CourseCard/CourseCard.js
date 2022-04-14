@@ -14,13 +14,11 @@ import { Link } from 'react-router-dom';
 let url = window.location.pathname;
 url = "/parents"
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(url);
 if (user && user?.result) {
   url = url + "/all/" + user.result.email;
 } else {
   url = url + "/all/" + "invalidEmail";
 }
-console.log(url);
 
 const breakPoints = [
   {width:296,itemsToShow:1,itemsToScroll:1},
@@ -70,7 +68,6 @@ class CourseCard extends Component {
     .get(`${url}`)
     .then((response) => {
       this.setState({ courses: response.data });
-      //console.log(response.data);
     });
   }
 

@@ -11,13 +11,11 @@ import { styled } from "@mui/material/styles";
 let url = window.location.pathname;
 url = "/parents"
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(url);
 if (user && user?.result) {
   url = url + "/all/" + user.result.email;
 } else {
   url = url + "/all/" + "invalidEmail";
 }
-console.log(url);
 
 const StyledAutocomplete = styled(Autocomplete)({
   
@@ -58,7 +56,6 @@ const SearchBar=()=> {
        axios.get(`${url}`)
    .then((response) => {
      getdata(response.data);
-     //console.log(response.data);
    });
   }
    
@@ -66,7 +63,6 @@ const SearchBar=()=> {
     const handleSubmit = (event) => {
       event.preventDefault();
       var subjects = data;
-      //console.log(event.target.defaultValue)
       var CardInfo = [];
       let y = {};
       for (let i = 0; i < subjects.length; i++) {  
@@ -79,13 +75,10 @@ const SearchBar=()=> {
           CardInfo.push(y);
         }
       }
-      console.log(CardInfo[0])
       navigation("/courseinfo/"+ CardInfo[0]._id, {state: {desc: CardInfo[0].desc, course: CardInfo[0].course, title: CardInfo[0].title, image: CardInfo[0].image}})
     };
     
-    //console.log(data)
     var subjects = data;
-    //console.log(typeof(subjects))
     var SearchInfo = [];
     for (let i = 0; i < subjects.length; i++) {
       let x = {};
@@ -93,7 +86,6 @@ const SearchBar=()=> {
       x.title = subjects[i].title;
       SearchInfo.push(x);
     }
-    // console.log(SearchInfo)
     const [open, setOpen] = React.useState(false);
     const [options, setOptions] = React.useState([]);
     const loading = open && SearchInfo.length === 0;
@@ -114,7 +106,7 @@ const SearchBar=()=> {
         await sleep(1e3); // For demo purposes.
     
         if (active) {
-          // setOptions([...SearchInfo]);
+           setOptions([...SearchInfo]);
         }
       })();
     

@@ -7,20 +7,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Carousel from 'react-elastic-carousel';
 import "./Card.css";
-// import Data from '../../data/Data';
 import { Link } from 'react-router-dom';
 
-// import CourseInfo from "../../pages/courseinfo/CourseInfo";
 let url = window.location.pathname;
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(url);
 if (user && user?.result) {
   url = url + "s/all/" + user.result.email;
 } else {
   url = url + "s/all/" + "invalidEmail";
 }
-console.log(url);
-// console.log(user.result.email);
 const breakPoints = [
   {width:296,itemsToShow:1,itemsToScroll:1},
   {width:600,itemsToShow:2,itemsToScroll:2},
@@ -73,13 +68,11 @@ class CourseCard extends Component {
     .get(`${url}`)
     .then((response) => {
       this.setState({ courses: response.data });
-      // console.log(response.data);
     });
   }
 
   render() {
     const { courses: courses } = this.state;
-    console.log(courses);
     var CardInfo = [];
     for (let i = 0; i < courses.length; i++) {
         let x = {};
@@ -95,7 +88,6 @@ class CourseCard extends Component {
           }
       
     }
-    console.log(CardInfo);
     return (
         <>
         <div className="grid">
