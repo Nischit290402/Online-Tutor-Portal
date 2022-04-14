@@ -1,15 +1,16 @@
 const express = require("express");
-// controllers
-const chatRoom=require('../controllers/chatroom.js');
+
+const chatRoom = require("../controllers/chatroom.js");
 const router = express.Router();
 
+// Connect Chatroom Routes with controller functions
+
 router
-  .get('/', chatRoom.getRecentConversation)
-  .get('/:roomId', chatRoom.getConversationByRoomId)
-  .post('/initiate', chatRoom.initiate)
-  .post('/:roomId/message', chatRoom.postMessage)
-  .put('/:roomId/mark-read', chatRoom.markConversationReadByRoomId)
-  .get('/allrooms/:id',chatRoom.getChatRoomsByUserId)
+  .get("/", chatRoom.getRecentConversation)
+  .get("/:roomId", chatRoom.getConversationByRoomId)
+  .post("/initiate", chatRoom.initiate)
+  .post("/:roomId/message", chatRoom.postMessage)
+  .put("/:roomId/mark-read", chatRoom.markConversationReadByRoomId)
+  .get("/allrooms/:id", chatRoom.getChatRoomsByUserId);
 
-
-module.exports= router;
+module.exports = router;
