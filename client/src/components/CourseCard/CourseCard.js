@@ -7,10 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Carousel from 'react-elastic-carousel';
 import "./Card.css";
-// import Data from '../../data/Data';
+
 import { Link } from 'react-router-dom';
 
-// import CourseInfo from "../../pages/courseinfo/CourseInfo";
 let url = window.location.pathname;
 url = "/parents"
 const user = JSON.parse(localStorage.getItem("profile"));
@@ -29,6 +28,7 @@ const breakPoints = [
 
 ];
 
+//create cards for courses
 const renderCard = (CardInfo) => {
   return (
     

@@ -8,7 +8,7 @@ import  Autocomplete  from "@mui/material/Autocomplete";
 import "./styles.css";
 import { styled } from "@mui/material/styles";
 
-
+//styling search bar for searching tutor
 const StyledAutocomplete = styled(Autocomplete)({
   
   "& .MuiAutocomplete-inputRoot": {
@@ -36,7 +36,7 @@ const StyledAutocomplete = styled(Autocomplete)({
   }
 });
 
-
+//create search bar for searching course
 const SearchBarT=()=> {
     const navigation = useNavigate();
     const [data,getdata] = useState('');

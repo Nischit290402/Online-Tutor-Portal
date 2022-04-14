@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./Box.css";
 
+//create a course card
 const renderCard = (card, index) => {
   return (
     <Card xs={{ maxWidth: 345 }} key={index} className="box">

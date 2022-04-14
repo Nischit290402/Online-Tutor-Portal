@@ -1,5 +1,6 @@
 import { makeStyles } from '@mui/styles';
-
+ 
+// styling for google signin
 export default makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),

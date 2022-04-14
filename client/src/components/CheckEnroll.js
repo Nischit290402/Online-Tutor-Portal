@@ -13,6 +13,8 @@ if (user && user?.result) {
   url = url + "/all/" + "invalidEmail";
 }
 console.log(url);
+
+//checks whether the course is enrolled or not
 class CheckEnroll extends Component {
   constructor(props) {
     super(props);

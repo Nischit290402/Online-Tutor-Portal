@@ -17,6 +17,7 @@ if (user && user?.result) {
   url = url + "/all/" + "invalidEmail";
 }
 
+//styling search bar for searching courses
 const StyledAutocomplete = styled(Autocomplete)({
   
   "& .MuiAutocomplete-inputRoot": {
@@ -44,7 +45,7 @@ const StyledAutocomplete = styled(Autocomplete)({
   }
 });
 
-
+//create search bar for searching course
 const SearchBar=()=> {
     const navigation = useNavigate();
     const [data,getdata] = useState('');

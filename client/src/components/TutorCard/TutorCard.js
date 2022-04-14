@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 
 // import CourseInfo from "../../pages/courseinfo/CourseInfo";
 
+//create tutor card
 const breakPoints = [
   {width:296,itemsToShow:1,itemsToScroll:1},
   {width:600,itemsToShow:2,itemsToScroll:2},

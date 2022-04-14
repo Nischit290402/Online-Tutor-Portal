@@ -8,6 +8,7 @@ var z = "imvalidemail"
 if (user && user?.result) {
   z = user.result.email;
 }
+//see all enrolled courses
 class EnrollCourse extends Component {
   constructor(props) {
     super(props);
