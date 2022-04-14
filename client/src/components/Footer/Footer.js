@@ -16,7 +16,7 @@ return (
 		</ul>
 	</Container>
 	<Nav className="me-auto">
-	ALL RIGHTS RESERVED 
+	Desktop Version 1.0
 	</Nav>
 	</Navbar>
 );
