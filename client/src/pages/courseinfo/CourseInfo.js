@@ -9,7 +9,7 @@ import CheckEnroll from "../parents/CheckEnroll";
 import axios from "axios";
 
 let url = window.location.pathname;
-// url = "/courses"+url.substring(0, u)
+
 const CourseInfo=()=>{
     const location = useLocation()
     const {id} = location.state;
@@ -33,10 +33,11 @@ const CourseInfo=()=>{
         // fontSize: 67,
         //position:'absolute',
     };
-    console.log({id});
     let isEnrolled="";
-    axios.get('/students/'+id).then((response)=>{isEnrolled=response.data;console.log(typeof isEnrolled);console.log(isEnrolled)}).catch((err)=> console.log(err));
-    // let condition = 
+    axios
+    .get('/students/'+id)
+    .then((response)=>{isEnrolled=response.data;console.log(typeof isEnrolled);console.log(isEnrolled)})
+    .catch((err)=> console.log(err));
   
     return(
         <>
@@ -56,15 +57,15 @@ const CourseInfo=()=>{
         <div className="card" style={myStyle}>
         <Container>
           <div className="card-block">
-            <h2>{title}</h2>
+            <h2 id="title">{title}</h2>
             <hr className="style"/>
             <div className="row">
               <div className="col-md-4">
-                <p><img src={image} className="img-responsive" width="300" height="180" alt={course}/></p>
+                <p><img src={image} className="img-responsive" id="img" width="300" height="180" alt={course}/></p>
               </div>
               <div className="col-md-8">
 
-                <h4>{course}</h4>
+                <h4 id="title">{course}</h4>
               <p>{desc}</p>
                 <br/><br/><br/><br/>
                 {/* <p><a href={url}><button ><b>Enroll Now »</b></button></a></p> */}

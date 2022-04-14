@@ -63,8 +63,8 @@ class CourseCard extends Component {
     };
   }
 
-  componentDidMount() {
-    axios
+  async componentDidMount() {
+    await axios
     .get(`${url}`)
     .then((response) => {
       this.setState({ courses: response.data });

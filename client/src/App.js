@@ -41,32 +41,22 @@ const App = () => {
             <Route path="/" element={<Landing />} />
             <Route path="/tutorinformation/:id" element={<Tutorinfo />} />
             <Route path="/courses" element={<Courses />} />
-            <Route path="/parents" element={<GetAllParentCourses />} />
             <Route path="/parents/check-enroll/:id" element={<CheckEnroll />} />
-            <Route
-              path="/parents/enroll-course/:id"
-              element={<EnrollCourse />}
-            />
+            <Route path="/parents/enroll-course/:id" element={<EnrollCourse />}/>
             <Route path="/parents/:id" element={<GetParentCourse />} />
             <Route path="/tutors" element={<Tutors />} />
             <Route path="/tutors/create-course" element={<CreateCourse />} />
             <Route path="/all/courses" element={<GetAllCourses />} />
             <Route path="/users/check" element={<CheckUser />} />
             <Route path="/users/createTutor" element={<CreateUserAndTutor />} />
-            <Route
-              path="/users/createParent"
-              element={<CreateParentAndStudent />}
-            />
+            <Route path="/users/createParent" element={<CreateParentAndStudent />}/>
             <Route path="/register" element={<RegistrationForm />} />
             <Route path="/register2" element={<RegistrationForm1 />} />
             <Route path="/student" element={<Student />} />
             <Route path="/parent" element={<Parent />} />
             <Route path="/tutor" element={<Tutor />} />
             <Route path="/courseinfo/:id" element={<CourseInfo />} />
-            <Route
-              path="/parents/enroll-course/:id"
-              element={<EnrollCourse />}
-            />
+            <Route path="/parents/enroll-course/:id" element={<EnrollCourse />}/>
             <Route path="/messages/:id" element={<Messages />} />
             <Route path="/createroom" element={<CreateRoom />} />
           </Routes>

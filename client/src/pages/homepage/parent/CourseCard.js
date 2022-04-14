@@ -57,8 +57,8 @@ class CourseCard extends Component {
       encourses: []
     };
   }
-  componentDidMount() {
-    axios
+  async componentDidMount() {
+    await axios
     .get("/parents/enrolled/"+ user.result.email)
     .then((response) => {
       this.setState({ courses: response.data });

@@ -64,14 +64,8 @@ class CourseCard extends Component {
     };
   }
 
-  componentDidMount() {
-    // axios
-    // .get(`${url}`)
-    // .then((response) => {
-    //   this.setState({ courses: response.data });
-    //   // console.log(response.data);
-    // });
-    axios
+  async componentDidMount() {
+   await axios
     .get("/students/"+user.result.email)
     .then((response) => {
       this.setState({ courses: response.data });

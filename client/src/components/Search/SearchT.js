@@ -44,8 +44,8 @@ const SearchBarT=()=> {
       f();
     },[])
  
-    const f=()=>{
-       axios.get("/tutors-info")
+    const f=async()=>{
+      await axios.get("/tutors-info")
    .then((response) => {
      getdata(response.data);
    });

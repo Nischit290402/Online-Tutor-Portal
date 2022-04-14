@@ -26,11 +26,11 @@ const Auth = () => {
         console.log(response);
         if(response.data){
           if (response.data.role === "student") {
-            navigation('/students')
+            navigation('/student')
           } else if (response.data.role === "parent") {
             navigation('/parent')
           } else if (response.data.role === "tutor") {
-            navigation('/tutors')
+            navigation('/tutor')
           } else {
             navigation('/');
           }

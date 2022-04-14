@@ -52,8 +52,8 @@ const SearchBar=()=> {
       f();
     },[])
  
-    const f=()=>{
-       axios.get(`${url}`)
+    const f=async()=>{
+      await axios.get(`${url}`)
    .then((response) => {
      getdata(response.data);
    });
