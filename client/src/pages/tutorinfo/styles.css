@@ -11,6 +11,10 @@
     padding-top: 20px; */
   }
 
+  #title{
+      color: white;
+  }
+
 .cont{
     margin: 0 auto;
     max-width: 1120px;

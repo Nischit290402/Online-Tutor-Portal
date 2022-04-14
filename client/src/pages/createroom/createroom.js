@@ -55,7 +55,7 @@ class CreateRoom extends Component {
               ></input>
             </div>
             <div>
-              <label className="form__label">User id: </label>
+              <label className="form__label">Your Friend's/Tutor's Email: </label>
               <input
                 className="form__input"
                 type="text"
@@ -65,7 +65,7 @@ class CreateRoom extends Component {
               ></input>
             </div>
             <div>
-              <label className="form__label">Your User id: </label>
+              <label className="form__label">Your Email id: </label>
               <input
                 className="form__input"
                 type="text"

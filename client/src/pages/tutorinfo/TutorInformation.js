@@ -41,7 +41,7 @@ const CourseInfo=()=>{
         <div className="card" style={myStyle}>
         <Container>
           <div className="card-block">
-            <h2>{name}</h2>
+            <h2 id="title">{name}</h2>
             <hr className="style"/>
             <div className="row">
               <div className="col-md-4">
@@ -49,7 +49,7 @@ const CourseInfo=()=>{
               </div>
               <div className="col-md-8">
 
-                <h4>{email}</h4>
+                <h4 id="title">{email}</h4>
                 
                 <p>{qual}</p>
               <br/><br/><br/><br/>

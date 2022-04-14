@@ -12,10 +12,8 @@ const userRoutes = require("./routes/users");
 const allRoutes = require("./routes/all");
 const checkRoutes = require("./routes/check");
 const uploadRoutes = require("./routes/upload");
-// const searchRoutes = require("./routes/search");
 const subjectRoutes = require("./routes/subject");
 const connectDB = require("./db/connect");
-const WebSockets = require("./Websockets");
 const userRouter = require("./routes/user");
 const chatRoomRouter = require("./routes/chatroom.js");
 const http = require("http");
@@ -67,15 +65,11 @@ app.use("/user", userRouter);
 app.use("/room", chatRoomRouter);
 app.use("/all", allRoutes);
 app.use("/subject", subjectRoutes);
-// process.env.CONNECTION_STRING
 port = process.env.port || 5000;
 
 const start = async () => {
   try {
     await connectDB(process.env.CONNECTION_STRING);
-    // app.listen(process.env.PORT, () => {
-    //   console.log("Server is listening on port 5000....");
-    // });
   } catch (error) {
     console.log("Error: ", error);
   }
