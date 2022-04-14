@@ -5,17 +5,30 @@ const login_info = {
 };
 
 const Course = require("../models/courses");
+const Student = require("../models/students");
 const Enrolled = require("../models/enrolled");
 
 //This contains functions of all routes accessed by the parents, which
 //includes getting all courses available, and enrolling/unenrolling their child from a course.
 
-const getAllCourses = async (req, res) => {
+const getAllEnrolledCourses = async (req, res) => {
   //Get all courses
+  const {uid: user_email} = req.params;
   try {
-    const all_courses = await Enrolled.find({
+    const get_student = await Student.findOne({ email: user_email });
+    if (get_student && get_student?.name){
+      login_info.email = user_email;
+      login_info.name = get_student.name;
+    }
+    const all_enrolled = await Enrolled.find({
       student_email: login_info.email,
     });
+    let all_courses = [];
+    for (let i=0; i<all_enrolled.length; i++){
+      let one_course = await Course.findOne({_id: all_enrolled[i].course_ID})
+      all_courses.push(one_course);
+    }
+    console.log(all_courses);
     res.status(200).json(all_courses); // this returns an array. Use {all_courses} to return class/object
   } catch (err) {
     res.status(500).json(err);
@@ -35,4 +48,4 @@ const getCourse = async (req, res) => {
   }
 };
 
-module.exports = { getAllCourses, getCourse };
+module.exports = { getAllEnrolledCourses, getCourse };

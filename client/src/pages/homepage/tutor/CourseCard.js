@@ -11,7 +11,15 @@ import "./Card.css";
 import { Link } from 'react-router-dom';
 
 // import CourseInfo from "../../pages/courseinfo/CourseInfo";
+let url = window.location.pathname;
 const user = JSON.parse(localStorage.getItem("profile"));
+console.log(url);
+if (user && user?.result) {
+  url = url + "s/all/" + user.result.email;
+} else {
+  url = url + "s/all/" + "invalidEmail";
+}
+console.log(url);
 // console.log(user.result.email);
 const breakPoints = [
   {width:296,itemsToShow:1,itemsToScroll:1},
@@ -35,7 +43,8 @@ const renderCard = (CardInfo) => {
           {CardInfo.course}
         </Typography>
         <hr/>
-        <Button href={CardInfo.gmeet} style={{backgroundColor:'black', color:"white", }}>LINK</Button>
+        <Button href={CardInfo.gmeet} style={{backgroundColor:'black', color:"white", }}>Gmeet LINK</Button><br/><br/>
+        <Button href={CardInfo.driveurl} style={{backgroundColor:'black', color:"white", }}>Drive LINK</Button>
       </CardContent>
       <CardActions>
         {/* <Button 
@@ -61,7 +70,7 @@ class CourseCard extends Component {
 
   componentDidMount() {
     axios
-    .get("/parents")
+    .get(`${url}`)
     .then((response) => {
       this.setState({ courses: response.data });
       // console.log(response.data);
@@ -81,6 +90,7 @@ class CourseCard extends Component {
             x.course = courses[i].name;
             x.desc = courses[i].description;
             x.gmeet = courses[i].gmeet;
+            x.driveurl = "https://drive.google.com/drive/folders/"+courses[i].driveURL;
             CardInfo.push(x);
           }
       

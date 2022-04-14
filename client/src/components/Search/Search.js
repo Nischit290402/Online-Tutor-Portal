@@ -8,6 +8,16 @@ import  Autocomplete  from "@mui/material/Autocomplete";
 import "./styles.css";
 import { styled } from "@mui/material/styles";
 
+let url = window.location.pathname;
+url = "/parents"
+const user = JSON.parse(localStorage.getItem("profile"));
+console.log(url);
+if (user && user?.result) {
+  url = url + "/all/" + user.result.email;
+} else {
+  url = url + "/all/" + "invalidEmail";
+}
+console.log(url);
 
 const StyledAutocomplete = styled(Autocomplete)({
   
@@ -45,7 +55,7 @@ const SearchBar=()=> {
     },[])
  
     const f=()=>{
-       axios.get("/parents")
+       axios.get(`${url}`)
    .then((response) => {
      getdata(response.data);
      //console.log(response.data);

@@ -43,21 +43,7 @@ const Courselist=()=>{
                   </Paper>
                   </Grid>
                   <br/>
-                  <Grid item>
-                  <Paper
-                    sx={{
-                      height: 140,
-                      width: 200,
-                      backgroundColor: (theme) =>
-                        theme.palette.mode === 'dark' ? '#1A2027' : '#e63946',
-                    }}
-                  >
-                  <Container><h4>Click To Upload to Drive</h4>
-                    <hr/>  
-                  <Button href="#" style={{backgroundColor:'green', color:"white", }}>UPLOAD</Button>
-                  </Container>
-                  </Paper>
-                </Grid>
+                  
                 </Grid>
               <Grid item>
               <Grid item>
@@ -69,7 +55,7 @@ const Courselist=()=>{
                       theme.palette.mode === 'dark' ? '#1A2027' : '#457b9d',
                   }}>
                   <Container>
-                    <h2>View Enrolled Courses</h2>
+                    <h2>Your Courses</h2>
                             <hr/>
                     <div className="card" style={myStyle}>
                         <Container>

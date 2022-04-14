@@ -11,6 +11,16 @@ import "./Card.css";
 import { Link } from 'react-router-dom';
 
 // import CourseInfo from "../../pages/courseinfo/CourseInfo";
+let url = window.location.pathname;
+url = "/parents"
+const user = JSON.parse(localStorage.getItem("profile"));
+console.log(url);
+if (user && user?.result) {
+  url = url + "/all/" + user.result.email;
+} else {
+  url = url + "/all/" + "invalidEmail";
+}
+console.log(url);
 
 const breakPoints = [
   {width:296,itemsToShow:1,itemsToScroll:1},
@@ -57,7 +67,7 @@ class CourseCard extends Component {
 
   componentDidMount() {
     axios
-    .get("/parents")
+    .get(`${url}`)
     .then((response) => {
       this.setState({ courses: response.data });
       //console.log(response.data);

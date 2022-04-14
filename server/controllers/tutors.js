@@ -45,6 +45,7 @@ const getAllCourses = async (req, res) => {
 
     const all_courses = await Course.find({ tutor_email: login_info.email });
     res.status(200).json(all_courses); // this returns an array. Use {all_courses} to return class/object
+    console.log(all_courses);
   } catch (err) {
     res.status(500).json(err);
   }
