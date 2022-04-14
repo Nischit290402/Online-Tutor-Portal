@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./cpas.css";
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(user);
 class CreateUserAndTutor extends Component {
   constructor(props) {
     super(props);

@@ -11,6 +11,8 @@ import "./Card.css";
 import { Link } from 'react-router-dom';
 
 // import CourseInfo from "../../pages/courseinfo/CourseInfo";
+const user = JSON.parse(localStorage.getItem("profile"));
+
 
 const breakPoints = [
   {width:296,itemsToShow:1,itemsToScroll:1},
@@ -55,41 +57,33 @@ class CourseCard extends Component {
       encourses: []
     };
   }
-
-  componentDidMount() {
-    axios
-    .get("/parents")
+  async componentDidMount() {
+    await axios
+    .get("/parents/enrolled/"+ user.result.email)
     .then((response) => {
       this.setState({ courses: response.data });
-      // console.log(response.data);
-    });
-    axios
-    .get("/students")
-    .then((response) => {
-      this.setState({ encourses: response.data });
-      // console.log(response.data);
+      console.log(response.data);
     });
   }
 
   render() {
-    const { courses: courses, encourses: encourses } = this.state;
+    const { courses: courses } = this.state;
     console.log(courses);
-    console.log(encourses);
     var CardInfo = [];
-    for (let i = 0; i < encourses.length; i++) {
-      for(let j = 0; j < courses.length; j++){
+    for (let i = 0; i < courses.length; i++) {
         let x = {};
-          if(encourses[i].course_ID===courses[j]._id){
-            x._id = courses[j]._id;
-            x.image = courses[j].image;
-            x.title = courses[j].title;
-            x.course = courses[j].name;
-            x.desc = courses[j].description;
+          {
+            x._id = courses[i]._id;
+            x.image = courses[i].image;
+            x.title = courses[i].title;
+            x.course = courses[i].name;
+            x.desc = courses[i].description;
+            x.gmeet = courses[i].gmeet;
+            x.driveurl = "https://drive.google.com/drive/folders/"+courses[i].driveURL;
             CardInfo.push(x);
           }
-      }
+      
     }
-    console.log(CardInfo);
     return (
         <>
         <div className="grid">

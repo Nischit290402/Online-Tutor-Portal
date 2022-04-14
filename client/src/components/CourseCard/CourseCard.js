@@ -11,6 +11,14 @@ import "./Card.css";
 import { Link } from 'react-router-dom';
 
 // import CourseInfo from "../../pages/courseinfo/CourseInfo";
+let url = window.location.pathname;
+url = "/parents"
+const user = JSON.parse(localStorage.getItem("profile"));
+if (user && user?.result) {
+  url = url + "/all/" + user.result.email;
+} else {
+  url = url + "/all/" + "invalidEmail";
+}
 
 const breakPoints = [
   {width:296,itemsToShow:1,itemsToScroll:1},
@@ -55,12 +63,11 @@ class CourseCard extends Component {
     };
   }
 
-  componentDidMount() {
-    axios
-    .get("/parents")
+  async componentDidMount() {
+    await axios
+    .get(`${url}`)
     .then((response) => {
       this.setState({ courses: response.data });
-      //console.log(response.data);
     });
   }
 

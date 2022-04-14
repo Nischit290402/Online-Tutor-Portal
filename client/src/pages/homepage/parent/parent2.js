@@ -20,8 +20,6 @@ const myStyle = {
     //position:'absolute',
 };
 
-let SInfo = {};
-axios.get('/parents/').then((response)=>SInfo=response.data);console.log(SInfo);
 
 const Courselist=()=>{
     const [spacing, setSpacing] = React.useState(2);
@@ -31,21 +29,7 @@ const Courselist=()=>{
         <Grid sx={{ flexGrow: 1 }} container spacing={2}>
           <Grid item xs={12}>
             <Grid container justifyContent="center" spacing={spacing}>
-                <Grid item>
-                  <Paper
-                    sx={{
-                      height: 140,
-                      width: 200,
-                      backgroundColor: (theme) =>
-                        theme.palette.mode === 'dark' ? '#1A2027' : '#e63946',
-                    }}
-                  >
-                  <Container><h4>Here goes Child's Info</h4>
-                    <hr/>
-                    <div>Parth which backend route gives info from parents table</div>
-                  </Container>
-                  </Paper>
-                </Grid>
+                
               <Grid item>
               <Grid item>
                 <Paper

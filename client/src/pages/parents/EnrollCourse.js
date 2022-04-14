@@ -3,7 +3,6 @@ import axios from "axios";
 
 let url = window.location.pathname;
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(url);
 
 if (user && user?.result) {
   url = url + "/" + user.result.email;

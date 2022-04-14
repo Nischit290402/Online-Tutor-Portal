@@ -10,12 +10,7 @@ const parentRoutes = require("./routes/parents");
 const studentRoutes = require("./routes/students");
 const userRoutes = require("./routes/users");
 const allRoutes = require("./routes/all");
-const checkRoutes = require("./routes/check");
-const uploadRoutes = require("./routes/upload");
-// const searchRoutes = require("./routes/search");
-const subjectRoutes = require("./routes/subject");
 const connectDB = require("./db/connect");
-const WebSockets = require("./Websockets");
 const userRouter = require("./routes/user");
 const chatRoomRouter = require("./routes/chatroom.js");
 const http = require("http");
@@ -56,26 +51,18 @@ const getAllTutors = async (req, res) => {
   }
 };
 app.get("/tutors-info", getAllTutors);
-
-app.use("/upload", uploadRoutes);
 app.use("/tutors", tutorRoutes);
 app.use("/parents", parentRoutes);
 app.use("/students", studentRoutes);
-app.use("/check", checkRoutes);
 app.use("/users", userRoutes);
 app.use("/user", userRouter);
 app.use("/room", chatRoomRouter);
 app.use("/all", allRoutes);
-app.use("/subject", subjectRoutes);
-// process.env.CONNECTION_STRING
 port = process.env.port || 5000;
 
 const start = async () => {
   try {
     await connectDB(process.env.CONNECTION_STRING);
-    // app.listen(process.env.PORT, () => {
-    //   console.log("Server is listening on port 5000....");
-    // });
   } catch (error) {
     console.log("Error: ", error);
   }
@@ -109,21 +96,15 @@ const getUser = (userId) => {
 };
 /** Create socket connection */
 global.io = socketio.listen(server);
-// global.io.on('connection', WebSockets.connection)
 global.io.on("connection", (socket) => {
-  //when ceonnect
-  // console.log("a user connected.");
 
   socket.on("addUser", (userId) => {
     addUser(userId, socket.id);
-    // global.io.emit("getUsers", users);
   });
 
   //when disconnect
   socket.on("disconnect", () => {
-    // console.log("a user disconnected!");
     removeUser(socket.id);
-    // global.io.emit("getUsers", users);
   });
 
   //send and get message
@@ -134,12 +115,6 @@ global.io.on("connection", (socket) => {
     });
   });
 
-  //when disconnect
-  // socket.on("disconnect", () => {
-  //   console.log("a user disconnected!");
-  //   removeUser(socket.id);
-  //   global.io.emit("getUsers", users);
-  // });
 });
 /** Listen on provided port, on all network interfaces. */
 server.listen(5000);

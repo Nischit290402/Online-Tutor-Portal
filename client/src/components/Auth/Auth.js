@@ -24,13 +24,13 @@ const Auth = () => {
       await axios.get(`http://localhost:5000/users/check/${result.email}`)
       .then((response) => {
         console.log(response);
-        if(response.data?.role){
+        if(response.data){
           if (response.data.role === "student") {
-            navigation('/students')
+            navigation('/student')
           } else if (response.data.role === "parent") {
             navigation('/parent')
           } else if (response.data.role === "tutor") {
-            navigation('/tutors')
+            navigation('/tutor')
           } else {
             navigation('/');
           }
@@ -40,8 +40,7 @@ const Auth = () => {
         }
       })
       .catch((err) => console.log(err));
-      // setUser(result)
-      // navigation("/users/check");
+
     } catch (error) {
       console.log(error);
     }

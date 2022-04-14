@@ -19,11 +19,12 @@ const getAllCourses = async (req, res) => {
   try {
     //Get Login Info
     const get_parent = await Parent.findOne({ email: user_email });
-    login_info.email = user_email;
-    login_info.name = get_parent.name;
-    login_info.child_email = get_parent.student_email;
-    console.log(login_info);
-
+    if (get_parent && get_parent?.name) {
+      login_info.email = user_email;
+      login_info.name = get_parent.name;
+      login_info.child_email = get_parent.student_email;
+      console.log(login_info);
+    }
     //Get Courses from Database
     const all_courses = await Course.find({});
     res.status(200).json(all_courses); // this returns an array. Use {all_courses} to return class/object
@@ -128,10 +129,40 @@ const checkEnroll = async (req, res) => {
     res.status(500).send(err);
   }
 };
+
+const getAllEnrolledCourses = async (req, res) => {
+  //Get all courses
+  console.log("hi");
+  const { uid: user_email } = req.params;
+  console.log("hi" + user_email);
+  try {
+    const get_parent = await Parent.findOne({ email: user_email });
+    console.log(get_parent);
+    if (get_parent && get_parent?.name) {
+      login_info.email = user_email;
+      login_info.name = get_parent.name;
+      login_info.child_email = get_parent.student_email;
+    }
+    const all_enrolled = await Enrolled.find({
+      student_email: login_info.child_email,
+    });
+    let all_courses = [];
+    for (let i = 0; i < all_enrolled.length; i++) {
+      let one_course = await Course.findOne({ _id: all_enrolled[i].course_ID });
+      all_courses.push(one_course);
+    }
+    console.log(all_courses);
+    res.status(200).json(all_courses); // this returns an array. Use {all_courses} to return class/object
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 module.exports = {
   getAllCourses,
   getCourse,
   enrollCourse,
   unenrollCourse,
   checkEnroll,
+  getAllEnrolledCourses,
 };

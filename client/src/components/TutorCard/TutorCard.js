@@ -59,7 +59,6 @@ class CourseCard extends Component {
   componentDidMount() {
     axios.get("/tutors-info").then((response) => {
       this.setState({ tutors: response.data });
-      console.log(response.data);
     });
   }
 
@@ -69,11 +68,11 @@ class CourseCard extends Component {
     for (let i = 0; i < tutors.length; i++) {
       let x = {};
       x._id = tutors[i]._id;
-      //x.image = tutors[i].image;
       x.email = tutors[i].email;
       x.name = tutors[i].name;
       x.qual = tutors[i].qualification;
       x.exp = tutors[i].experience;
+     //x.imageURL = tutors[i].imageURL;
       TutorInfo.push(x);
     }
     

@@ -7,12 +7,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Carousel from 'react-elastic-carousel';
 import "./Card.css";
-// import Data from '../../data/Data';
 import { Link } from 'react-router-dom';
 
-// import CourseInfo from "../../pages/courseinfo/CourseInfo";
+let url = window.location.pathname;
 const user = JSON.parse(localStorage.getItem("profile"));
-// console.log(user.result.email);
+if (user && user?.result) {
+  url = url + "s/all/" + user.result.email;
+} else {
+  url = url + "s/all/" + "invalidEmail";
+}
 const breakPoints = [
   {width:296,itemsToShow:1,itemsToScroll:1},
   {width:600,itemsToShow:2,itemsToScroll:2},
@@ -35,7 +38,8 @@ const renderCard = (CardInfo) => {
           {CardInfo.course}
         </Typography>
         <hr/>
-        <Button href={CardInfo.gmeet} style={{backgroundColor:'black', color:"white", }}>LINK</Button>
+        <Button href={CardInfo.gmeet} style={{backgroundColor:'black', color:"white", }}>Gmeet LINK</Button><br/><br/>
+        <Button href={CardInfo.driveurl} style={{backgroundColor:'black', color:"white", }}>Drive LINK</Button>
       </CardContent>
       <CardActions>
         {/* <Button 
@@ -59,18 +63,16 @@ class CourseCard extends Component {
     };
   }
 
-  componentDidMount() {
-    axios
-    .get("/parents")
+  async componentDidMount() {
+    await axios
+    .get(`${url}`)
     .then((response) => {
       this.setState({ courses: response.data });
-      // console.log(response.data);
     });
   }
 
   render() {
     const { courses: courses } = this.state;
-    console.log(courses);
     var CardInfo = [];
     for (let i = 0; i < courses.length; i++) {
         let x = {};
@@ -81,11 +83,11 @@ class CourseCard extends Component {
             x.course = courses[i].name;
             x.desc = courses[i].description;
             x.gmeet = courses[i].gmeet;
+            x.driveurl = "https://drive.google.com/drive/folders/"+courses[i].driveURL;
             CardInfo.push(x);
           }
       
     }
-    console.log(CardInfo);
     return (
         <>
         <div className="grid">

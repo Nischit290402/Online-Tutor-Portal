@@ -13,33 +13,18 @@
     "Testimonials": [
       {
         "img": "img/testimonials/01.jpg",
-        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-        "name": "John Doe"
+        "text": "\"I found the website very attractive, I was able to connect with all kinds of students and share my knowledge and experience with them. \"",
+        "name": "Neil Jain - Tutor"
       },
       {
         "img": "img/testimonials/02.jpg",
-        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-        "name": "Johnathan Doe"
+        "text": "\"The perfomance of my son has increased dramatically after enrolling in the courses provided here.\"",
+        "name": "Nitin Ahmed- Parent"
       },
       {
         "img": "img/testimonials/03.jpg",
-        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-        "name": "John Doe"
-      },
-      {
-        "img": "img/testimonials/04.jpg",
-        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-        "name": "Johnathan Doe"
-      },
-      {
-        "img": "img/testimonials/05.jpg",
-        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-        "name": "John Doe"
-      },
-      {
-        "img": "img/testimonials/06.jpg",
-        "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-        "name": "Johnathan Doe"
+        "text": "\"I found a lot of great Tutors who cleared doubts, that even my school teachers couldn't.\"",
+        "name": "Mukesh kumar- Student"
       }
     ],
     "Features": [

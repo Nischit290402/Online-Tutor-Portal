@@ -4,7 +4,15 @@ import axios from "axios";
 let url = window.location.pathname;
 // console.log(cid);
 // console.log(url);
-
+url = "/parents"
+const user = JSON.parse(localStorage.getItem("profile"));
+console.log(url);
+if (user && user?.result) {
+  url = url + "/all/" + user.result.email;
+} else {
+  url = url + "/all/" + "invalidEmail";
+}
+console.log(url);
 class CheckEnroll extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +25,7 @@ class CheckEnroll extends Component {
   componentDidMount() {
       console.log(this.props.sendID)
     axios
-      .get("/parents/"+this.props.sendID)
+      .get(`${url}`+this.props.sendID)
       .then((response) => {
         this.setState({ isEnrolled: response.data });
         console.log(response.data);
