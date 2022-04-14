@@ -12,20 +12,19 @@ const Enrolled = require("../models/enrolled");
 const { sharefolder_read } = require("./drive");
 const { log } = require("async");
 
-//This contains functions of all routes accessed by the parents, which
-//includes getting all courses available, and enrolling/unenrolling their child from a course.
-
-//done
+//Get All Course Data
 const getAllCourses = async (req, res) => {
-  //Get all courses
+  //Get parameter
   const { uid: user_email } = req.params;
   try {
+    //Get Login Info
     const get_parent = await Parent.findOne({ email: user_email });
     login_info.email = user_email;
     login_info.name = get_parent.name;
     login_info.child_email = get_parent.student_email;
     console.log(login_info);
 
+    //Get Courses from Database
     const all_courses = await Course.find({});
     res.status(200).json(all_courses); // this returns an array. Use {all_courses} to return class/object
   } catch (err) {
@@ -33,53 +32,56 @@ const getAllCourses = async (req, res) => {
   }
 };
 
-//done
+//Get a particular course using CourseID
 const getCourse = async (req, res) => {
   try {
     const { id: courseID } = req.params;
     const course = await Course.findOne({ _id: courseID });
-    res.status(200).json(course); // this returns an array. Use {all_courses} to return class/object
+    res.status(200).json(course);
   } catch (err) {
+    //Error handling
     res.status(500).json(err);
   }
 };
 
 const utc = new Date().toJSON().slice(0, 10);
 
-//ToDo: Check if student is already enrolled
+//Enroll Student in a course
 const enrollCourse = async (req, res) => {
+  //Get Parameters
   const { id: courseID, uid: user_email } = req.params;
   try {
+    //Get Login Info
     const get_parent = await Parent.findOne({ email: user_email });
     login_info.email = user_email;
     login_info.name = get_parent.name;
     login_info.child_email = get_parent.student_email;
 
+    //Check if course is valid
     const find_course = await Course.findOne({ _id: courseID });
 
-    console.log(find_course);
     if (find_course.length == 0) {
       res.send(`Course with id: ${courseID} not found`); // 500 status
     }
-    // console.log(
-    //   find_course,
-    //   find_course.driveURL,
-    //   find_course.name,
-    //   login_info.child_email
-    // );
+
+    //Share Course Drive Folder with Student
     sharefolder_read(find_course.driveURL, login_info.child_email); ///
     const enroll_data = {
       course_ID: courseID,
       student_email: login_info.child_email,
       date_of_enrollment: utc,
     };
+
+    //Enroll in Database
     const enrolled_course = await Enrolled.create(enroll_data);
     res.send(enrolled_course);
   } catch (err) {
+    //Handle errors
     res.status(500).send(err);
   }
 };
 
+//Unenroll Course
 const unenrollCourse = async (req, res) => {
   const { id: courseID, uid: user_email } = req.params;
   try {
@@ -98,26 +100,31 @@ const unenrollCourse = async (req, res) => {
   }
 };
 
-//Resolve error
+//Check if a student is enrolled in a course
 const checkEnroll = async (req, res) => {
+  //Get Parameters
   const { id: courseID, uid: user_email } = req.params;
   try {
+    //Get Login Info
     const get_parent = await Parent.findOne({ email: user_email });
     login_info.email = user_email;
     login_info.name = get_parent.name;
     login_info.child_email = get_parent.student_email;
 
+    //Check if student is enrolled in Database
     const check = await Enrolled.find({
       course_ID: courseID,
       student_email: login_info.child_email,
     });
-    console.log(check);
+
+    //Send Result
     if (check.length === 0) {
       res.send("false");
     } else {
       res.send("true");
     }
   } catch (err) {
+    //Handle Errors
     res.status(500).send(err);
   }
 };

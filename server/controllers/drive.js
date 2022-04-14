@@ -3,13 +3,14 @@ const { google } = require("googleapis");
 const async = require("async");
 const { log } = require("console");
 
+//Get environment variables
 require("dotenv").config();
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URL = process.env.REDIRECT_URL;
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
-// console.log(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL, REFRESH_TOKEN);
 
+//Google Drive API
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
@@ -18,6 +19,7 @@ const oAuth2Client = new google.auth.OAuth2(
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 const drive = google.drive({ version: "v3", auth: oAuth2Client });
 
+//Create folder in g-drive using Drive API
 function createfolder(f_name) {
   var fileMetadata = {
     name: f_name,
@@ -65,6 +67,8 @@ function uploadfile() {
     }
   );
 }
+
+//Share Folder with edit access
 function sharefolder(fid, to_email) {
   var fileId = fid;
   var permissions = [
@@ -107,6 +111,7 @@ function sharefolder(fid, to_email) {
   );
 }
 
+//Share Folder with read access
 function sharefolder_read(fid, to_email) {
   var fileId = fid;
   var permissions = [

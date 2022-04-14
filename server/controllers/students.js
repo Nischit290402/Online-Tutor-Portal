@@ -7,16 +7,13 @@ const login_info = {
 const Course = require("../models/courses");
 const Enrolled = require("../models/enrolled");
 
-//This contains functions of all routes accessed by the parents, which
-//includes getting all courses available, and enrolling/unenrolling their child from a course.
-
+//Get All Enrolled Courses
 const getAllCourses = async (req, res) => {
-  //Get all courses
   try {
     const all_courses = await Enrolled.find({
       student_email: login_info.email,
     });
-    res.status(200).json(all_courses); // this returns an array. Use {all_courses} to return class/object
+    res.status(200).json(all_courses);
   } catch (err) {
     res.status(500).json(err);
   }
