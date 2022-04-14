@@ -1,4 +1,4 @@
-import React, { useState }from "react";
+import React, { useState,useEffect }from "react";
 import Container  from 'react-bootstrap/Container';
 import { useLocation } from 'react-router-dom'
 import "./styles.css"
@@ -9,6 +9,7 @@ import CheckEnroll from "../parents/CheckEnroll";
 import axios from "axios";
 
 let url = window.location.pathname;
+const user = JSON.parse(localStorage.getItem("profile"));
 
 const CourseInfo=()=>{
     const location = useLocation()
@@ -21,6 +22,7 @@ const CourseInfo=()=>{
     const sendID = () => {
       setData(id);
     }
+
     const myStyle = {
         backgroundImage: "linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url()",
         backgroundRepeat: 'no-repeat',
@@ -33,12 +35,26 @@ const CourseInfo=()=>{
         // fontSize: 67,
         //position:'absolute',
     };
+    const [par,setPar]=useState(false);
+    useEffect(()=>{
+      axios.get(`http://localhost:5000/users/check/${user.result.email}`)
+        .then((response) => {
+          console.log(response);
+          if(response.data.role){
+            if (response.data.role === "parent") {
+              setPar(true)
+            }
+          }
+        })
+        .catch((err) => console.log(err));
+
+    },[par])
+      
     let isEnrolled="";
     axios
     .get('/students/'+id)
     .then((response)=>{isEnrolled=response.data;console.log(typeof isEnrolled);console.log(isEnrolled)})
     .catch((err)=> console.log(err));
-  
     return(
         <>
         <header className="site-head">
@@ -69,8 +85,7 @@ const CourseInfo=()=>{
               <p>{desc}</p>
                 <br/><br/><br/><br/>
                 {/* <p><a href={url}><button ><b>Enroll Now »</b></button></a></p> */}
-                <a onClick={()=>sendID()}><EnrollCourse sendID={data}/></a>
-                <br/>
+                {user?(par? (<a onClick={()=>sendID()}><EnrollCourse sendID={data}/></a>):<br/> ): (<br/>)}
 
               </div>
             </div>
