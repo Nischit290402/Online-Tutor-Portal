@@ -2,6 +2,7 @@ import React from "react";
 import BasicCard from "./CourseCard/Card";
 import { Grid } from "@mui/material";
 
+//display all the coursecard
 const GetAllParentCourses = () => {
   return (
     <>

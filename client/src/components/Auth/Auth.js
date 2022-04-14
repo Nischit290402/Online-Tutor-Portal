@@ -7,7 +7,7 @@ import Icon from "./icon";
 import { AUTH } from "../../constants/actionTypes";
 import axios from "axios";
 const user = JSON.parse(localStorage.getItem("profile"));
-
+// google login
 const Auth = () => {
   const dispatch = useDispatch();
   const navigation = useNavigate();

@@ -46,15 +46,17 @@ const CourseInfo=()=>{
             <hr className="style"/>
             <div className="row">
               <div className="col-md-4">
-                <p><img src={image} className="img-responsive" width="300" height="180" alt={name}/></p>
+                <p><center><img src={image} className="img-responsive" width="180" height="180" alt={name}/></center></p>
               </div>
               <div className="col-md-8">
 
-                <h4 id="title">{email}</h4>
-                
-                <p>{qual}</p>
-              <br/><br/>
-
+                <h4 id="title">Email Address: {email}</h4>
+                <br/>
+                <h6><u>Qualifications:</u><br/> </h6>
+                {qual}
+                <br/>
+              <h6><u>Experience:</u><br/> </h6>
+              {exp}
               </div>
             </div>
           </div>
