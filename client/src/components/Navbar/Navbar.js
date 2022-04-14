@@ -42,7 +42,6 @@ const Navbarr = () => {
 
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
-
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
@@ -72,8 +71,9 @@ const Navbarr = () => {
               <>
                 <Dropdown>
                   <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                    {user.result.name}
                     <img
-                      src={pic}
+                      src={user.result.imageUrl}
                       width="37"
                       height="37"
                       className="d-inline-block "

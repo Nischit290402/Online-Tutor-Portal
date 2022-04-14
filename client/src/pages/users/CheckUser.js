@@ -16,7 +16,7 @@ class CheckUser extends Component {
           <>
           <div className="form">
             <h3>Are you
-            <Button variant="outline-warning"><Link to="/users/createparent">Parent</Link></Button> or <Button variant="outline-warning" ><Link to="/users/createtutor">Tutor</Link></Button>
+            <Button id="lol" variant="warning"><Link to="/users/createparent">Parent</Link></Button> or <Button id="lol" variant="warning" ><Link to="/users/createtutor">Tutor</Link></Button>
             </h3>
             <br />
             <h4>

@@ -50,8 +50,8 @@ class BasicParentCard extends Component {
     };
   }
 
-  componentDidMount() {
-    axios.get(`${url}`).then((response) => {
+  async componentDidMount() {
+    await axios.get(`${url}`).then((response) => {
       this.setState({ courses: response.data });
       console.log(response.data);
     });

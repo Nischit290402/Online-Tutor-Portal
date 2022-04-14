@@ -26,7 +26,7 @@ const renderCard = (TutorInfo) => {
   return (
     
     <Card xs={{ maxWidth: 345 }} key={TutorInfo._id} className="box" >
-      <img src='#' alt={TutorInfo.name} height="150" width="256"/>
+      <img src={TutorInfo.imageURL} alt={TutorInfo.name} height="150" width="256"/>
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
           {TutorInfo.name}
@@ -36,11 +36,8 @@ const renderCard = (TutorInfo) => {
         </Typography> */}
       </CardContent>
       <CardActions>
-        <Button size="small">BUY</Button>
-        <Button 
-          size="small" 
-          >
-            <Link to={'/tutorinformation/'+ TutorInfo._id} state={{qual: TutorInfo.qual, exp: TutorInfo.exp, name: TutorInfo.name, email: TutorInfo.email}} >Learn More</Link>
+        <Button size="small">
+            <Link to={'/tutorinformation/'+ TutorInfo._id} state={{qual: TutorInfo.qual, exp: TutorInfo.exp, name: TutorInfo.name, email: TutorInfo.email, image: TutorInfo.imageURL}} >Learn More</Link>
         </Button>
         
       </CardActions>
@@ -57,8 +54,8 @@ class CourseCard extends Component {
     };
   }
 
-  componentDidMount() {
-    axios.get("/tutors-info").then((response) => {
+  async componentDidMount() {
+    await axios.get("/tutors-info").then((response) => {
       this.setState({ tutors: response.data });
     });
   }
@@ -73,7 +70,7 @@ class CourseCard extends Component {
       x.name = tutors[i].name;
       x.qual = tutors[i].qualification;
       x.exp = tutors[i].experience;
-     //x.imageURL = tutors[i].imageURL;
+      x.imageURL = tutors[i].imageURL;
       TutorInfo.push(x);
     }
     

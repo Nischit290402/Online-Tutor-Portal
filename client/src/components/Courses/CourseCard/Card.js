@@ -37,8 +37,8 @@ class BasicCard extends Component {
     };
   }
 
-  componentDidMount() {
-    axios.get("/parents").then((response) => {
+  async componentDidMount() {
+    await axios.get("/parents").then((response) => {
       this.setState({ courses: response.data });
       console.log(response.data);
     });

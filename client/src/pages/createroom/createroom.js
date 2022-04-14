@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./createroom.css";
+import Button from "react-bootstrap/Button";
 
 class CreateRoom extends Component {
   constructor(props) {
@@ -34,8 +35,9 @@ class CreateRoom extends Component {
     await axios.post(`http://localhost:5000/room/initiate`, req)
       .then((response) => {
         console.log(response);
+        alert("Successfully Created Room");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {console.log(err);alert("Failed to create Room")});
   };
   render() {
     const { room_name,user_id,currentuser_id } =
@@ -75,7 +77,7 @@ class CreateRoom extends Component {
               ></input>
             </div>
             <div>
-              <button type="submit">Submit</button>
+            <Button type="submit" variant="primary">Submit</Button>
             </div>
           </div>
         </form>

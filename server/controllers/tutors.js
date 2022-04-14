@@ -11,13 +11,14 @@ const { google } = require("googleapis");
 const { async: async2 } = require("async");
 const { log } = require("console");
 
+//Get environment variables
 require("dotenv").config();
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URL = process.env.REDIRECT_URL;
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
-// console.log(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL, REFRESH_TOKEN);
 
+//Setup Drive API
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
@@ -30,34 +31,37 @@ const { findOneAndUpdate } = require("../models/courses");
 const Course = require("../models/courses");
 const Tutor = require("../models/tutors");
 const { file } = require("googleapis/build/src/apis/file");
-//This contains functions of all routes accessed by the tutor, which
-//includes getting all courses by that tutor, creating/updating/deleting a course of that logged in tutor.
 
+//Get all courses created by the tutor
 const getAllCourses = async (req, res) => {
-  //Get all courses by that tutor
+  //Get parameters
   const { uid: user_email } = req.params;
   try {
+    //Get Tutor Info
     const get_tutor = await Tutor.findOne({ email: user_email });
     login_info.email = user_email;
     login_info.name = get_tutor.name;
-    console.log(login_info);
 
+    //Get Course Data from Database
     const all_courses = await Course.find({ tutor_email: login_info.email });
-    res.status(200).json(all_courses); // this returns an array. Use {all_courses} to return class/object
-    console.log(all_courses);
+    res.status(200).json(all_courses);
   } catch (err) {
+    //Error Handling
     res.status(500).json(err);
   }
 };
 
+//Get a particular course
 const getCourse = async (req, res) => {
   try {
+    //Get Parameters and tutor info
     const { id: courseID, uid: user_email } = req.params;
     const get_tutor = await Tutor.findOne({ email: user_email });
     login_info.email = user_email;
     login_info.name = get_tutor.name;
     console.log(login_info);
 
+    //Get Course Data from database
     const course = await Course.findOne({
       _id: courseID,
       tutor_email: login_info.email,
@@ -68,13 +72,16 @@ const getCourse = async (req, res) => {
   }
 };
 
+//Create New Course
 const createCourse = async (req, res) => {
   const { uid: user_email } = req.params;
   try {
+    //Get Tutor Info
     const get_tutor = await Tutor.findOne({ email: user_email });
     login_info.email = user_email;
     login_info.name = get_tutor.name;
-    console.log(login_info);
+
+    //Create G-Drive Folder for Course
     const data = req.body;
     data.tutor_email = login_info.email;
     data.driveURL = "";
@@ -107,9 +114,8 @@ const createCourse = async (req, res) => {
   }
 };
 
-//change findOneAndUpdate
+//Update Course
 const updateCourse = async (req, res) => {
-  // Not updating course currently
   try {
     const { id: courseID, uid: user_email } = req.params;
     const get_tutor = await Tutor.findOne({ email: user_email });
@@ -132,6 +138,7 @@ const updateCourse = async (req, res) => {
   }
 };
 
+//Delete Course
 const deleteCourse = async (req, res) => {
   const { id: courseID } = req.params;
   try {
@@ -141,11 +148,6 @@ const deleteCourse = async (req, res) => {
     res.status(500).send(`Cannot Delete: Invalid id: ${courseID} \n ${err}`);
   }
 };
-global.f = "";
-function setF(z) {
-  global.f = z;
-}
-
 
 module.exports = {
   getAllCourses,

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./cc.css";
+import Button from "react-bootstrap/Button";
 let url = window.location.pathname;
 const user = JSON.parse(localStorage.getItem("profile"));
 
@@ -22,20 +23,21 @@ class CreateCourse extends Component {
       gmeet: "",
     };
   }
-
+  
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
-  handleSubmit = (e) => {
+  handleSubmit = async(e) => {
     e.preventDefault();
-    axios
-      .post(`${url}`, this.state)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.log(err));
+    await axios
+    .post(`${url}`, this.state)
+    .then((response) => {
+      console.log(response);
+      alert("Course created successfully");
+    })
+    .catch((err) => {console.log(err);alert("Failed to create Course")});
   };
   render() {
     const { name, description, title, image, gmeet } = this.state;
@@ -94,7 +96,7 @@ class CreateCourse extends Component {
               ></input>
             </div>
             <div>
-              <button type="submit">Submit</button>
+              <Button type="submit" variant="primary">Submit</Button>
             </div>
           </div>
         </form>

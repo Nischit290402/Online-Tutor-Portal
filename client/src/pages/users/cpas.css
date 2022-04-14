@@ -13,7 +13,10 @@
     padding: 20px;
     /* height: 600px; */
 }
-
+#lol{
+    margin-left: 5px;
+    margin-right: 5px;
+}
 .form-body {
     text-align: left;
     padding: 20px 10px;

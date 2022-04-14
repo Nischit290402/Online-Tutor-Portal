@@ -10,14 +10,9 @@ import Parent from "./pages/homepage/parent/parenthome";
 import Tutor from "./pages/homepage/tutor/tutorhome";
 import CourseInfo from "./pages/courseinfo/CourseInfo";
 import Tutorinfo from "./pages/tutorinfo/TutorInformation";
-
 import RegistrationForm from "./pages/registration/reg";
 import RegistrationForm1 from "./pages/registration/reg2";
-
 import CreateCourse from "./pages/tutors/CreateCourse";
-import GetTutorCourses from "./pages/tutors/GetTutorCourses";
-import GetTutorCourse from "./pages/tutors/GetTutorCourse";
-import GetAllParentCourses from "./pages/parents/GetAllParentCourses";
 import GetParentCourse from "./pages/parents/GetParentCourse";
 import EnrollCourse from "./pages/parents/EnrollCourse";
 import GetAllCourses from "./pages/all/GetAllCourses";
@@ -25,7 +20,6 @@ import CheckEnroll from "./pages/parents/CheckEnroll";
 import CheckUser from "./pages/users/CheckUser";
 import CreateUserAndTutor from "./pages/users/CreateUserAndTutor";
 import CreateParentAndStudent from "./pages/users/CreateParentAndStudent";
-
 import Messages from "./pages/messages/messages";
 import CreateRoom from "./pages/createroom/createroom";
 import "./App.css";

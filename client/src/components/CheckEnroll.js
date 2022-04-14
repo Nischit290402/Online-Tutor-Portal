@@ -24,9 +24,8 @@ class CheckEnroll extends Component {
     };
   }
 
-  componentDidMount() {
-      console.log(this.props.sendID)
-    axios
+  async componentDidMount() {
+    await axios
       .get(`${url}`+this.props.sendID)
       .then((response) => {
         this.setState({ isEnrolled: response.data });
