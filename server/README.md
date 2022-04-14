@@ -4,4 +4,4 @@
     npm install
     node app.js
 
-For more details, Read the [manual](hjakd)
+For more details, Read the [manual](/docs/Instruction_Manual.pdf)

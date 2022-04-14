@@ -61,7 +61,6 @@ const Navbarr = () => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/tutors">Tutors</Nav.Link>
             <Nav.Link href="/courses">Courses</Nav.Link>
-            <Nav.Link href="/messages/0">Messages</Nav.Link>
           </Nav>
           <Nav className="me-auto">
           {url === "/courses" || url.substring(0,11) === "/courseinfo" ? <SearchBar />:''}

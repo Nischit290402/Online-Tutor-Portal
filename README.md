@@ -9,21 +9,18 @@ The project contains multiple features -
 5. Chat with anyone on the platform
 
 For more information of Online-Tutor-Portal you can refer to following documents - <br>
-Link for SRS: [SRS Document](aiod)  
-Link for Design Document: [Design Document](link)
+Link for SRS: [SRS Document](/docs/Software_Requirements_Specification.pdf)  
+Link for Design Document: [Design Document](/docs/Software_Design_Document.pdf)
 
 This project is developed By Group 2:<br>
 1. Bhore Parth Shirish (200001015)<br>
 3. Mir Razee Mohideen (200001045)<br>
 2. Nischit Hosamani (200001054)<br>
 4. Nishchay Shroff (200001055)<hr>
-
-Visit [http://softwarep012.com](http://softwarep012.pythonanywhere.com/) for live demo. Frontend and Backend working.  
-<br />
       
 ### MANUAL  
 
-The detailed Instruction manual can be found [here](aedkm).
+The detailed Instruction manual can be found [here](/docs/Instruction_Manual.pdf).
 <br><br>
 
 # Steps To Install 
@@ -54,6 +51,7 @@ The detailed Instruction manual can be found [here](aedkm).
 
 Both the Client and the Server needs to be running simultaneously for the portal to work properly.
 <br>
+<br>
 To run react-client , run the following commands;
 ```
 cd client/
@@ -69,11 +67,9 @@ node app.js
 
 ### Testing  
 
-<!-- #### Manula Testing -->
-  
     Manual Testing was done on the product, by both developers and users.
 
-    Details of the Test cases and test reports are provided in the /documentation/testing folder.
+Details of the Test cases and test reports are provided in the [this](/docs/testing/) folder.
 
 ----
       
