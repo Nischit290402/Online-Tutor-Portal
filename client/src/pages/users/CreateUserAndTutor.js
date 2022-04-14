@@ -22,9 +22,9 @@ class CreateUserAndTutor extends Component {
       [e.target.name]: e.target.value,
     });
   };
-  handleSubmit = async(e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    await axios
+    axios
     .post("/users/createTutor", this.state)
     .then((response) => {
       console.log(response);

@@ -16,11 +16,15 @@ const Tutors=()=> {
             </div>
         </header>
         <div>
+            <center>
+            <div className="Tdiv">
         <Grid padding={6}>
             <Paper variant="outlined">
                     <TutorCard />
             </Paper>
         </Grid>   
+        </div>
+        </center>
         </div>  
         </>
     )

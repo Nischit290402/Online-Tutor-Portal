@@ -22,9 +22,9 @@ class CreateParentAndStudent extends Component {
       [e.target.name]: e.target.value,
     });
   };
-  handleSubmit = async(e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    await axios
+    axios
     .post("/users/createParent", this.state)
     .then((response) => {
       console.log(response);

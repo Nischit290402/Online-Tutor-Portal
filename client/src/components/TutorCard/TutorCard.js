@@ -14,19 +14,17 @@ import { Link } from 'react-router-dom';
 
 //create tutor card
 const breakPoints = [
-  {width:296,itemsToShow:1,itemsToScroll:1},
-  {width:600,itemsToShow:2,itemsToScroll:2},
-  {width:908,itemsToShow:3,itemsToScroll:3},
-  {width:1200,itemsToShow:4,itemsToScroll:4},
-  {width:1500,itemsToShow:5,itemsToScroll:5},
-
+  {width:196,itemsToShow:1,itemsToScroll:1},
+  {width:400,itemsToShow:2,itemsToScroll:2},
+  {width:608,itemsToShow:3,itemsToScroll:3},
+  {width:900,itemsToShow:4,itemsToScroll:4},
 ];
 
 const renderCard = (TutorInfo) => {
   return (
     
     <Card xs={{ maxWidth: 345 }} key={TutorInfo._id} className="box" >
-      <img src={TutorInfo.imageURL} alt={TutorInfo.name} height="150" width="256"/>
+      <img src={TutorInfo.imageURL} alt={TutorInfo.name} height="150" width="150"/>
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
           {TutorInfo.name}

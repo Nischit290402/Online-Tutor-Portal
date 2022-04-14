@@ -7,7 +7,6 @@ const Courses=()=> {
 
     return(
         <>
-        <br/><br/>
         <header className="site-head">
             <div className="container">
             <div className="site-banner">
