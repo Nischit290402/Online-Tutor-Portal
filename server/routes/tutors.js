@@ -9,6 +9,8 @@ const {
   deleteCourse,
 } = require("../controllers/tutors");
 
+// Connect Tutor Routes with Tutor functions
+
 router.route("/all/:uid").get(getAllCourses);
 router.route("/create-course/:uid").post(createCourse);
 router

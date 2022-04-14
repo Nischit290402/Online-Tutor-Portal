@@ -7,6 +7,9 @@ const {
   CheckUser,
   getUserByEmail,
 } = require("../controllers/users");
+
+// Connect Users Routes with Users functions
+
 router.route("/:email").get(getUserByEmail);
 router.route("/createTutor").post(CreateUserAndTutor);
 router.route("/createParent").post(CreateParentAndStudent);
