@@ -39,7 +39,6 @@ const CourseInfo=()=>{
     useEffect(()=>{
       axios.get(`http://localhost:5000/users/check/${user.result.email}`)
         .then((response) => {
-          console.log(response);
           if(response.data.role){
             if (response.data.role === "parent") {
               setPar(true)

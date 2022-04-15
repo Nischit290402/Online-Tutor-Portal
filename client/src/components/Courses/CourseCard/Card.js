@@ -40,7 +40,6 @@ class BasicCard extends Component {
   async componentDidMount() {
     await axios.get("/parents").then((response) => {
       this.setState({ courses: response.data });
-      console.log(response.data);
     });
   }
 

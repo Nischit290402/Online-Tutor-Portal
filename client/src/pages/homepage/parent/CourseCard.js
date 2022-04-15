@@ -3,12 +3,10 @@ import React, { Component } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Carousel from 'react-elastic-carousel';
 import "./Card.css";
 // import Data from '../../data/Data';
-import { Link } from 'react-router-dom';
 
 // import CourseInfo from "../../pages/courseinfo/CourseInfo";
 const user = JSON.parse(localStorage.getItem("profile"));
@@ -62,17 +60,14 @@ class CourseCard extends Component {
     .get("/parents/enrolled/"+ user.result.email)
     .then((response) => {
       this.setState({ courses: response.data });
-      console.log(response.data);
     });
   }
 
   render() {
-    const { courses: courses } = this.state;
-    console.log(courses);
+    const { courses } = this.state;
     var CardInfo = [];
     for (let i = 0; i < courses.length; i++) {
         let x = {};
-          {
             x._id = courses[i]._id;
             x.image = courses[i].image;
             x.title = courses[i].title;
@@ -81,7 +76,7 @@ class CourseCard extends Component {
             x.gmeet = courses[i].gmeet;
             x.driveurl = "https://drive.google.com/drive/folders/"+courses[i].driveURL;
             CardInfo.push(x);
-          }
+
       
     }
     return (

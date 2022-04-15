@@ -69,13 +69,11 @@ class CourseCard extends Component {
     .get("/students/"+user.result.email)
     .then((response) => {
       this.setState({ courses: response.data });
-      console.log(response.data);
     }).catch((error) =>console.error(error));
   }
 
   render() {
     const { courses: courses } = this.state;
-    console.log(courses);
     var CardInfo = [];
     for (let i = 0; i < courses.length; i++) {
         let x = {};

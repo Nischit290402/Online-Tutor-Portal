@@ -3,7 +3,6 @@ import axios from "axios";
 import "./cpas.css";
 import Button from "react-bootstrap/Button";
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(user);
 class CreateUserAndTutor extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +32,7 @@ class CreateUserAndTutor extends Component {
     .catch((err) => {console.log(err);alert("Failed to create user")});
   };
   render() {
-    const { name, email, qualification, experience, imageURL } = this.state;
+    const { name, email, qualification, experience } = this.state;
     return (
       <div>
         <form className="form" onSubmit={this.handleSubmit}>

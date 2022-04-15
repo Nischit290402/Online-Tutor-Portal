@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 
 let url = window.location.pathname;
-// console.log(url);
 
 class GetAllCourses extends Component {
   constructor(props) {
@@ -16,7 +15,6 @@ class GetAllCourses extends Component {
   async componentDidMount() {
     await axios.get("/all/courses").then((response) => {
       this.setState({ courses: response.data });
-      console.log(response.data);
     });
   }
 

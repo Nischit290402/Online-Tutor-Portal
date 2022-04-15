@@ -17,7 +17,6 @@ const Auth = () => {
     const result = res?.profileObj;
 
     const token = res?.tokenId;
-    console.log(res);
     try {
       await dispatch({ type: AUTH, data: { result, token } });
       console.log(result);

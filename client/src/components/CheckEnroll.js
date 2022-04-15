@@ -2,17 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 
 let url = window.location.pathname;
-// console.log(cid);
-// console.log(url);
+
 url = "/parents"
 const user = JSON.parse(localStorage.getItem("profile"));
-console.log(url);
 if (user && user?.result) {
   url = url + "/all/" + user.result.email;
 } else {
   url = url + "/all/" + "invalidEmail";
 }
-console.log(url);
 
 //checks whether the course is enrolled or not
 class CheckEnroll extends Component {

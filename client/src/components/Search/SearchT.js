@@ -58,9 +58,9 @@ const SearchBarT=()=> {
       var TutorInfo = [];
       let y = {};
       for (let i = 0; i < tutors.length; i++) {  
-        if(tutors[i].name==event.target.defaultValue)
+        if(tutors[i].name===event.target.defaultValue)
         {  y._id = tutors[i]._id;
-          y.image = tutors[i].image;
+          y.imageURL = tutors[i].imageURL;
           y.name = tutors[i].name;
           y.email = tutors[i].email;
           y.qual = tutors[i].qualification;
@@ -68,7 +68,7 @@ const SearchBarT=()=> {
           TutorInfo.push(y);
         }
       }
-      navigation("/tutorinformation/"+ TutorInfo[0]._id, {state: {qual: TutorInfo[0].qual, exp: TutorInfo[0].exp, name: TutorInfo[0].name, email: TutorInfo[0].email}})
+      navigation("/tutorinformation/"+ TutorInfo[0]._id, {state: {qual: TutorInfo[0].qual, exp: TutorInfo[0].exp, name: TutorInfo[0].name, email: TutorInfo[0].email, image: TutorInfo[0].imageURL}})
     };
     
     var tutors = data;
@@ -131,7 +131,6 @@ const SearchBarT=()=> {
             selectOnFocus
             options={SearchInfo}
             getOptionLabel={(option) => option.name}
-            //groupBy={(option) => option.title.substring(0,2)}
             loading={loading}
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Tutor" InputProps={{...params.InputProps,endAdornment: (

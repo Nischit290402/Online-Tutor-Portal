@@ -4,10 +4,8 @@ import axios from "axios";
 
 const CheckUser = () => {
   const user = useState(JSON.parse(localStorage.getItem("profile")));
-  //   console.log(user);
 
   if (user) {
-    // console.log(user.length);
     console.log(user[0]);
     if (user[0]?.result) {
       console.log("Logged in");
@@ -24,7 +22,6 @@ const CheckUser = () => {
 };
 
 let url = window.location.pathname;
-// console.log(url);
 
 class GetTutorCourse extends Component {
   constructor(props) {
