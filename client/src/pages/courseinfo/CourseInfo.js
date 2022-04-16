@@ -36,13 +36,14 @@ const CourseInfo=()=>{
         //position:'absolute',
     };
     const [par,setPar]=useState(false);
-    useEffect(()=>{
-      axios.get(`http://localhost:5000/users/check/${user.result.email}`)
+    useEffect(async()=>{
+      await axios.get(`http://localhost:5000/users/check/${user.result.email}`)
         .then((response) => {
           if(response.data.role){
             if (response.data.role === "parent") {
               setPar(true)
             }
+            console.log(response.data);
           }
         })
         .catch((err) => console.log(err));

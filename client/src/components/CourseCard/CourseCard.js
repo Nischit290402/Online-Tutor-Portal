@@ -68,6 +68,7 @@ class CourseCard extends Component {
     .get(`${url}`)
     .then((response) => {
       this.setState({ courses: response.data });
+      console.log(response.data);
     });
   }
 
